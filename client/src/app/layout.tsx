@@ -3,6 +3,7 @@
 // import favicon64 from '@/data/images/favicon/favicon-64x64.png';
 // import faviconSvg from '@/data/images/favicon/favicon.svg';
 // import poster from '@/data/user/source/Header.jpg';
+import { Navigation } from '@/shared/ui';
 import type { Metadata } from 'next';
 import './styles';
 
@@ -54,7 +55,7 @@ export default function RootLayout({
 				content='141414'
 			/>
 			<body>
-				{/* <Nav isSolid theme='dark' /> */}
+				<Navigation />
 				<main>{children}</main>
 				{/* <Footer /> */}
 			</body>

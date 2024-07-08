@@ -1,5 +1,11 @@
+import { MainScreen } from '@/widgets/ui/blocks';
+
 const MainPage = () => {
-	return <div></div>;
+	return (
+		<>
+			<MainScreen />
+		</>
+	);
 };
 
 export default MainPage;

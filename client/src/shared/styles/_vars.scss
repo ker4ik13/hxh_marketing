@@ -11,6 +11,7 @@
 }
 
 // Colors
+$white: #ffffff;
 // Primary
 $primary-main: #1e41e3;
 // Primary Shade
@@ -45,118 +46,137 @@ $state-success: #35b369;
 $gray-dark: #a7a7a7;
 $gray-medium: #cfcfcf;
 $gray-light: #e9e9e9;
-$gray-extra-light: #a7a7a7;
+$gray-extra-light: #f7f7f7;
+// Gradients
+// Primary
+@property --gradient-primary-1 {
+	syntax: '<color>';
+	initial-value: $primary-shade-100;
+	inherits: false;
+}
+@property --gradient-primary-2 {
+	syntax: '<color>';
+	initial-value: $primary-shade-300;
+	inherits: false;
+}
+@property --gradient-primary-hover-1 {
+	syntax: '<color>';
+	initial-value: $primary-shade-200;
+	inherits: false;
+}
+@property --gradient-primary-hover-2 {
+	syntax: '<color>';
+	initial-value: $primary-shade-400;
+	inherits: false;
+}
+// Secondary
+@property --gradient-secondary-1 {
+	syntax: '<color>';
+	initial-value: $white;
+	inherits: false;
+}
+@property --gradient-secondary-2 {
+	syntax: '<color>';
+	initial-value: $primary-tint-800;
+	inherits: false;
+}
+@property --gradient-secondary-hover-1 {
+	syntax: '<color>';
+	initial-value: $primary-tint-800;
+	inherits: false;
+}
+@property --gradient-secondary-hover-2 {
+	syntax: '<color>';
+	initial-value: $primary-tint-700;
+	inherits: false;
+}
+
+@mixin gradient-primary($duration: 0.1s, $isNeedHover: false) {
+	transition:
+		all $duration,
+		--gradient-primary-1 $duration,
+		--gradient-primary-2 $duration;
+
+	background: linear-gradient(
+		270deg,
+		var(--gradient-primary-1) 25%,
+		var(--gradient-primary-2) 100%
+	);
+
+	// Если ховер нужен
+	@if $isNeedHover == true {
+		@media (hover: hover) {
+			&:hover {
+				--gradient-primary-1: var(--gradient-primary-hover-1);
+				--gradient-primary-2: var(--gradient-primary-hover-2);
+			}
+		}
+	}
+}
+@mixin gradient-secondary($duration: 0.1s, $isNeedHover: false) {
+	transition:
+		all $duration,
+		--gradient-secondary-1 $duration,
+		--gradient-secondary-2 $duration;
+
+	background: linear-gradient(
+		90deg,
+		var(--gradient-secondary-1) 0%,
+		var(--gradient-secondary-2) 100%
+	);
+
+	// Если ховер нужен
+	@if $isNeedHover == true {
+		@media (hover: hover) {
+			&:hover {
+				--gradient-secondary-1: var(--gradient-secondary-hover-1);
+				--gradient-secondary-2: var(--gradient-secondary-hover-2);
+			}
+		}
+	}
+}
 
 // Containers
-$containers-big: em(1200);
-$containers-medium: em(1120);
-$containers-small: em(1080);
+$containers-big: rem(1200);
+$containers-medium: rem(1120);
+$containers-small: rem(1080);
+// Containers mixins
+@mixin container-big($padding-inline: rem(20)) {
+	max-width: $containers-big;
+	padding: 0 $padding-inline;
+	width: 100%;
+	margin: 0 auto;
+}
+@mixin container-medium($padding-inline: rem(20)) {
+	max-width: $containers-medium;
+	padding: 0 $padding-inline;
+	width: 100%;
+	margin: 0 auto;
+}
+@mixin container-small($padding-inline: rem(20)) {
+	max-width: $containers-small;
+	padding: 0 $padding-inline;
+	width: 100%;
+	margin: 0 auto;
+}
 
 // Values
+$corner-none: 0;
+$corner-extra-small: rem(4);
+$corner-small: rem(8);
+$corner-medium: rem(12);
+$corner-large: rem(16);
+$corner-extra-large: rem(28);
+$corner-full: rem(1000);
 
 // Fonts
-
-// Templates
-@mixin desktop-h1() {
-	@include inter(300);
-	font-size: rem(54);
-	line-height: rem(62);
+@mixin gilroy($weight: 400, $size: 16, $style: normal) {
+	font-family: 'Gilroy', sans-serif;
+	font-style: $style;
+	font-size: rem($size);
+	font-weight: $weight;
+	line-height: 1;
 	cursor: text;
-	text-wrap: balance;
-}
-@mixin mob-h1() {
-	@include inter(300);
-	font-size: rem(27);
-	line-height: rem(31);
-	cursor: text;
-	text-wrap: balance;
-}
-@mixin desktop-h2() {
-	@include inter(300);
-	font-size: rem(40);
-	line-height: rem(46);
-	cursor: text;
-	text-wrap: balance;
-}
-@mixin mob-h2() {
-	@include inter(300);
-	font-size: rem(23);
-	line-height: rem(26);
-	cursor: text;
-	text-wrap: balance;
-}
-@mixin desktop-h3() {
-	@include inter(300);
-	font-size: rem(30);
-	line-height: rem(34);
-	cursor: text;
-	text-wrap: balance;
-}
-@mixin mob-h3() {
-	@include inter(300);
-	font-size: rem(19);
-	line-height: rem(21);
-	cursor: text;
-	text-wrap: balance;
-}
-@mixin desktop-p() {
-	@include inter(400);
-	font-size: rem(20);
-	line-height: rem(28);
-	letter-spacing: rem(0.4);
-	cursor: text;
-}
-@mixin mob-p() {
-	@include inter(400);
-	font-size: rem(16);
-	line-height: rem(22);
-	cursor: text;
-}
-@mixin desktop-p-light() {
-	@include inter(300);
-	font-size: rem(20);
-	line-height: rem(28);
-	letter-spacing: rem(0.4);
-	cursor: text;
-}
-@mixin mob-p-light() {
-	@include inter(300);
-	font-size: rem(16);
-	line-height: rem(18);
-	cursor: text;
-}
-@mixin desktop-small() {
-	@include inter(300);
-	font-size: rem(16);
-	line-height: rem(18);
-	letter-spacing: 2%;
-	cursor: text;
-	background: transparent;
-}
-@mixin desktop-extra-small() {
-	@include inter(300);
-	font-size: rem(14);
-	line-height: rem(18);
-	letter-spacing: rem(0.4);
-	cursor: text;
-}
-@mixin desktop-link() {
-	@include inter(300);
-	font-size: rem(20);
-	line-height: rem(28);
-	letter-spacing: 2%;
-	cursor: text;
-	text-decoration: underline;
-	font-style: oblique 12deg;
-	letter-spacing: rem(0.4);
-}
-@mixin mob-link() {
-	@include inter(300);
-	font-size: rem(16);
-	line-height: rem(18);
-	cursor: text;
-	text-decoration: underline;
-	font-style: oblique 12deg;
 }
 
 @mixin strings($string-count) {
@@ -170,13 +190,6 @@ $containers-small: em(1080);
 	box-orient: vertical;
 }
 
-@mixin container() {
-	max-width: rem(1320);
-	padding: 0 20px;
-	width: 100%;
-	margin: 0 auto;
-}
-
 @mixin position-center() {
 	position: absolute;
 	top: 50%;
@@ -184,52 +197,13 @@ $containers-small: em(1080);
 	transform: translate(-50%, -50%);
 }
 
-@mixin theme-transition() {
-	transition: color 0.2s, background 0.2s, background-color 0.2s;
-}
-
-@mixin H1-text() {
-	font-size: rem(34);
-	font-weight: 600;
-	cursor: text;
-}
-@mixin H2-text() {
-	font-size: rem(30);
-	font-weight: 600;
-	cursor: text;
-}
-@mixin H3-text() {
-	font-size: rem(26);
-	font-weight: 600;
-	cursor: text;
-}
-@mixin H4-text() {
-	font-size: rem(24);
-	font-weight: 600;
-	cursor: text;
-}
-@mixin H5-text() {
-	font-size: rem(20);
-	font-weight: 600;
-	cursor: text;
-}
-@mixin H6-text() {
-	font-size: rem(18);
-	font-weight: 600;
-	cursor: text;
-}
-
-@mixin p-text() {
-	font-size: rem(16);
-	font-weight: 400;
-	cursor: text;
-}
-
 // Responsive
 
 $max-1400: em(1400);
 $max-1300: em(1300);
+$max-1250: em(1250);
 $max-1200: em(1200);
+$max-1150: em(1150);
 $max-1100: em(1100);
 $max-1050: em(1050);
 $max-1000: em(1000);

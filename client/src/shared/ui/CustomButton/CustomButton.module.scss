@@ -1,0 +1,56 @@
+@import '@/shared/styles/_vars';
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: rem(10);
+	@include gilroy(500);
+	cursor: pointer;
+	border: 0;
+	outline: none;
+	width: 100%;
+	letter-spacing: 0.01em;
+	text-decoration: none;
+
+	&.primary {
+		@include gradient-primary(0.2s, true);
+		color: $white;
+	}
+
+	&.secondary {
+		color: $text-black;
+		@include gradient-secondary(0.2s, true);
+	}
+
+	&.transparent {
+		transition: 0.2s;
+		background: transparent;
+		border: 1px solid rgba(1, 109, 236, 0.6);
+		outline: none;
+		color: $text-black;
+
+		&:hover {
+			background: rgba(221, 236, 255, 0.6);
+		}
+	}
+
+	&.small {
+		padding: rem(8) rem(16);
+		border-radius: $corner-small;
+		font-size: rem(14);
+	}
+
+	&.medium {
+		padding: rem(12) rem(30);
+		border-radius: $corner-small;
+		font-size: rem(16);
+	}
+
+	&.large {
+		padding: rem(16) rem(36);
+		border-radius: $corner-medium;
+		font-size: rem(18);
+	}
+}

@@ -1,0 +1,60 @@
+@import '@/shared/styles/_vars';
+
+.mainScreen {
+	min-height: rem(900);
+	width: 100%;
+	background: $text-black;
+	position: relative;
+	padding: rem(160) 0 rem(80);
+
+	@media (max-width: $max-768) {
+		padding: rem(80) 0 rem(40);
+	}
+}
+.bgImage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+	-o-object-position: center;
+	object-position: center;
+	-webkit-filter: blur(rem(10));
+	filter: blur(rem(10));
+}
+.container {
+	@include container-medium();
+	position: relative;
+	z-index: 2;
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: rem(80);
+}
+.titleWrapper {
+	position: relative;
+}
+.title {
+	color: $gray-extra-light;
+	@include gilroy(600, 210);
+	max-width: rem(1060);
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.subtitle {
+	@include gilroy(400, 20);
+	line-height: 1.4;
+	color: $gray-extra-light;
+	max-width: rem(470);
+	position: absolute;
+	bottom: rem(26);
+	right: 0;
+}
+.buttons {
+	display: flex;
+	align-items: center;
+	gap: rem(30);
+}
