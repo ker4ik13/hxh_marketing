@@ -1,0 +1,247 @@
+@use 'sass:math';
+
+// Convert
+@function rem($px) {
+	$result: math.div($px, 16) + rem;
+	@return $result;
+}
+@function em($px) {
+	$result: math.div($px, 16) + em;
+	@return $result;
+}
+
+// Colors
+// Primary
+$primary-main: #1e41e3;
+// Primary Shade
+$primary-shade-100: #006cec;
+$primary-shade-200: #005ece;
+$primary-shade-300: #0051b1;
+$primary-shade-400: #004393;
+$primary-shade-500: #003676;
+$primary-shade-600: #002858;
+$primary-shade-700: #001b3b;
+$primary-shade-800: #000d1d;
+// Primary Tint
+$primary-tint-100: #006cec;
+$primary-tint-200: #0f7dff;
+$primary-tint-300: #318fff;
+$primary-tint-400: #54a2ff;
+$primary-tint-500: #76b5ff;
+$primary-tint-600: #98c7ff;
+$primary-tint-700: #badaff;
+$primary-tint-800: #ddecff;
+$primary-tint-900: #edf5ff;
+// Text
+$text-black: #141414;
+$text-light-black: #1e1e1e;
+$text-dark: #3a3a3a;
+// State
+$state-info: #2f80ed;
+$state-warning: #ebbc2e;
+$state-error: #ed3a3a;
+$state-success: #35b369;
+// Gray
+$gray-dark: #a7a7a7;
+$gray-medium: #cfcfcf;
+$gray-light: #e9e9e9;
+$gray-extra-light: #a7a7a7;
+
+// Containers
+$containers-big: em(1200);
+$containers-medium: em(1120);
+$containers-small: em(1080);
+
+// Values
+
+// Fonts
+
+// Templates
+@mixin desktop-h1() {
+	@include inter(300);
+	font-size: rem(54);
+	line-height: rem(62);
+	cursor: text;
+	text-wrap: balance;
+}
+@mixin mob-h1() {
+	@include inter(300);
+	font-size: rem(27);
+	line-height: rem(31);
+	cursor: text;
+	text-wrap: balance;
+}
+@mixin desktop-h2() {
+	@include inter(300);
+	font-size: rem(40);
+	line-height: rem(46);
+	cursor: text;
+	text-wrap: balance;
+}
+@mixin mob-h2() {
+	@include inter(300);
+	font-size: rem(23);
+	line-height: rem(26);
+	cursor: text;
+	text-wrap: balance;
+}
+@mixin desktop-h3() {
+	@include inter(300);
+	font-size: rem(30);
+	line-height: rem(34);
+	cursor: text;
+	text-wrap: balance;
+}
+@mixin mob-h3() {
+	@include inter(300);
+	font-size: rem(19);
+	line-height: rem(21);
+	cursor: text;
+	text-wrap: balance;
+}
+@mixin desktop-p() {
+	@include inter(400);
+	font-size: rem(20);
+	line-height: rem(28);
+	letter-spacing: rem(0.4);
+	cursor: text;
+}
+@mixin mob-p() {
+	@include inter(400);
+	font-size: rem(16);
+	line-height: rem(22);
+	cursor: text;
+}
+@mixin desktop-p-light() {
+	@include inter(300);
+	font-size: rem(20);
+	line-height: rem(28);
+	letter-spacing: rem(0.4);
+	cursor: text;
+}
+@mixin mob-p-light() {
+	@include inter(300);
+	font-size: rem(16);
+	line-height: rem(18);
+	cursor: text;
+}
+@mixin desktop-small() {
+	@include inter(300);
+	font-size: rem(16);
+	line-height: rem(18);
+	letter-spacing: 2%;
+	cursor: text;
+	background: transparent;
+}
+@mixin desktop-extra-small() {
+	@include inter(300);
+	font-size: rem(14);
+	line-height: rem(18);
+	letter-spacing: rem(0.4);
+	cursor: text;
+}
+@mixin desktop-link() {
+	@include inter(300);
+	font-size: rem(20);
+	line-height: rem(28);
+	letter-spacing: 2%;
+	cursor: text;
+	text-decoration: underline;
+	font-style: oblique 12deg;
+	letter-spacing: rem(0.4);
+}
+@mixin mob-link() {
+	@include inter(300);
+	font-size: rem(16);
+	line-height: rem(18);
+	cursor: text;
+	text-decoration: underline;
+	font-style: oblique 12deg;
+}
+
+@mixin strings($string-count) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -moz-box;
+	display: -webkit-box;
+	-webkit-line-clamp: $string-count;
+	-webkit-box-orient: vertical;
+	line-clamp: $string-count;
+	box-orient: vertical;
+}
+
+@mixin container() {
+	max-width: rem(1320);
+	padding: 0 20px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+@mixin position-center() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin theme-transition() {
+	transition: color 0.2s, background 0.2s, background-color 0.2s;
+}
+
+@mixin H1-text() {
+	font-size: rem(34);
+	font-weight: 600;
+	cursor: text;
+}
+@mixin H2-text() {
+	font-size: rem(30);
+	font-weight: 600;
+	cursor: text;
+}
+@mixin H3-text() {
+	font-size: rem(26);
+	font-weight: 600;
+	cursor: text;
+}
+@mixin H4-text() {
+	font-size: rem(24);
+	font-weight: 600;
+	cursor: text;
+}
+@mixin H5-text() {
+	font-size: rem(20);
+	font-weight: 600;
+	cursor: text;
+}
+@mixin H6-text() {
+	font-size: rem(18);
+	font-weight: 600;
+	cursor: text;
+}
+
+@mixin p-text() {
+	font-size: rem(16);
+	font-weight: 400;
+	cursor: text;
+}
+
+// Responsive
+
+$max-1400: em(1400);
+$max-1300: em(1300);
+$max-1200: em(1200);
+$max-1100: em(1100);
+$max-1050: em(1050);
+$max-1000: em(1000);
+$max-950: em(950);
+$max-900: em(900);
+$max-850: em(850);
+$max-800: em(800);
+$max-768: em(768);
+$max-700: em(700);
+$max-650: em(650);
+$max-600: em(600);
+$max-550: em(550);
+$max-500: em(500);
+$max-450: em(450);
+$max-400: em(400);

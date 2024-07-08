@@ -1,0 +1,45 @@
+@import '@/shared/styles/_vars';
+
+html {
+	scroll-behavior: smooth;
+}
+body {
+	scroll-behavior: smooth;
+	min-height: 100vh;
+}
+
+body.overflow {
+	overflow: hidden;
+}
+body.blur {
+	position: relative;
+	overflow: hidden;
+	transition: 0.2s;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 20;
+		width: 100%;
+		height: 100%;
+		background: rgba(40, 35, 32, 0.7);
+		-webkit-backdrop-filter: blur(7px);
+		backdrop-filter: blur(7px);
+	}
+}
+
+:root {
+	color-scheme: only dark;
+}
+
+// Выделение текста
+// * {
+//   &::-moz-selection {
+//     background-color: rgba(87, 1, 101, 0.3);
+//   }
+//   &::selection {
+//     background-color: rgba(87, 1, 101, 0.3);
+//   }
+// }

@@ -14,22 +14,23 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"cross-env": "^7.0.3",
+		"next": "14.2.4",
 		"react": "^18",
 		"react-dom": "^18",
-		"next": "14.2.4",
-		"cross-env": "^7.0.3",
 		"sharp": "^0.33.4"
 	},
 	"devDependencies": {
-		"typescript": "^5",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
+		"axios": "^1.7.2",
 		"eslint": "^8",
 		"eslint-config-next": "14.2.4",
-		"axios": "^1.7.2",
+		"prettier": "^3.3.2",
 		"react-hook-form": "^7.52.1",
 		"sass": "^1.77.6",
-		"swiper": "^11.1.4"
+		"swiper": "^11.1.4",
+		"typescript": "^5"
 	}
 }
