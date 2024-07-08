@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_ui_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}
