@@ -1,0 +1,11 @@
+@import '@/shared/styles/_vars';
+
+.services {
+	width: 100%;
+}
+.container {
+	@include container-medium();
+	display: flex;
+	flex-direction: column;
+	gap: rem(40);
+}

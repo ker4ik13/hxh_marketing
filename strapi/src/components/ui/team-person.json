@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_ui_team_people",
+  "info": {
+    "displayName": "TeamPerson",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "job": {
+      "type": "string",
+      "required": true
+    },
+    "info": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.label-with-value",
+      "required": true
+    },
+    "contacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.contact-link",
+      "required": true
+    },
+    "contact": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -362,51 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'standard';
-        }
-      >;
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    preview: Attribute.Media<'images'> & Attribute.Required;
-    onMainPage: Attribute.Boolean & Attribute.DefaultTo<false>;
-    keywords: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -635,242 +590,6 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
-export interface PluginAwesomeHelpHelp extends Schema.CollectionType {
-  collectionName: 'helps';
-  info: {
-    singularName: 'help';
-    pluralName: 'helps';
-    displayName: 'help';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    contentType: Attribute.String;
-    path: Attribute.String;
-    helpContent: Attribute.String;
-    fieldName: Attribute.String;
-    containerType: Attribute.String;
-    zoneName: Attribute.String;
-    componentName: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::awesome-help.help',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::awesome-help.help',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginCmsAnalyzerAnalyse extends Schema.CollectionType {
-  collectionName: 'cms-analyser-results';
-  info: {
-    singularName: 'analyse';
-    pluralName: 'analyses';
-    collectionName: 'cms-analyser-results';
-    displayName: 'CmsAnalyzerResults';
-    description: 'Cms Analyzer results';
-  };
-  options: {
-    increments: true;
-    timestamps: true;
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    key: Attribute.String;
-    apiName: Attribute.String;
-    frontUrl: Attribute.String;
-    documentId: Attribute.Integer;
-    documentFields: Attribute.JSON;
-    seoAnalyse: Attribute.JSON;
-    tags: Attribute.JSON;
-    screenshot: Attribute.String;
-    depth: Attribute.Integer;
-    contentKind: Attribute.String;
-    locale: Attribute.String;
-    isChecked: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::cms-analyzer.analyse',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::cms-analyzer.analyse',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginCmsAnalyzerMatch extends Schema.CollectionType {
-  collectionName: 'cms-analyser-matches';
-  info: {
-    singularName: 'match';
-    pluralName: 'matches';
-    collectionName: 'cms-analyser-matches';
-    displayName: 'CmsAnalyzerMatches';
-    description: 'Cms Analyzer matches';
-  };
-  options: {
-    increments: true;
-    timestamps: true;
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    apiName: Attribute.String;
-    fieldName: Attribute.String;
-    tagName: Attribute.String;
-    componentName: Attribute.String;
-    dynamicZoneName: Attribute.String;
-    status: Attribute.String;
-    isMultipleDoc: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::cms-analyzer.match',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::cms-analyzer.match',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginCmsAnalyzerMedia extends Schema.CollectionType {
-  collectionName: 'cms-analyser-medias';
-  info: {
-    singularName: 'media';
-    pluralName: 'medias';
-    collectionName: 'cms-analyser-medias';
-    displayName: 'CmsAnalyzerMedias';
-    description: 'Cms Analyzer Medias';
-  };
-  options: {
-    increments: true;
-    timestamps: true;
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    frontUrl: Attribute.String;
-    mediaUrl: Attribute.String;
-    height: Attribute.Integer;
-    width: Attribute.Integer;
-    alt: Attribute.String;
-    data: Attribute.JSON;
-    status: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::cms-analyzer.media',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::cms-analyzer.media',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginCmsAnalyzerSummary extends Schema.CollectionType {
-  collectionName: 'cms-analyser-summaries';
-  info: {
-    singularName: 'summary';
-    pluralName: 'summaries';
-    collectionName: 'cms-analyser-summaries';
-    displayName: 'CmsAnalyzerSummaries';
-    description: 'Cms Analyzer Results summary';
-  };
-  options: {
-    increments: true;
-    timestamps: true;
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    frontUrl: Attribute.String;
-    nbUrl: Attribute.Integer;
-    nbErrorLow: Attribute.Integer;
-    nbErrorHigh: Attribute.Integer;
-    user: Attribute.String;
-    date: Attribute.DateTime;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::cms-analyzer.summary',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::cms-analyzer.summary',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -1069,6 +788,119 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Pages';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    reviews: Attribute.Relation<
+      'api::page.page',
+      'oneToMany',
+      'api::review.review'
+    >;
+    review: Attribute.Relation<
+      'api::page.page',
+      'oneToOne',
+      'api::review.review'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::page.page',
+      'oneToMany',
+      'api::page.page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'Review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.Component<'ui.title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    reviews: Attribute.Component<'ui.review-card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    blockName: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'reviews-block'>;
+    uniqueName: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::review.review',
+      'oneToMany',
+      'api::review.review'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1079,20 +911,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::article.article': ApiArticleArticle;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
-      'plugin::awesome-help.help': PluginAwesomeHelpHelp;
-      'plugin::cms-analyzer.analyse': PluginCmsAnalyzerAnalyse;
-      'plugin::cms-analyzer.match': PluginCmsAnalyzerMatch;
-      'plugin::cms-analyzer.media': PluginCmsAnalyzerMedia;
-      'plugin::cms-analyzer.summary': PluginCmsAnalyzerSummary;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::page.page': ApiPagePage;
+      'api::review.review': ApiReviewReview;
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_blocks_team_blocks",
+  "info": {
+    "displayName": "TeamBlock",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.title",
+      "required": true
+    },
+    "team": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.team-person",
+      "required": true
+    },
+    "blockName": {
+      "type": "string",
+      "required": true,
+      "default": "team-block"
+    }
+  }
+}

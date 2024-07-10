@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_ui_custom_buttons",
+  "info": {
+    "displayName": "CustomButton",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "children": {
+      "type": "string",
+      "required": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "button",
+        "submit",
+        "reset"
+      ],
+      "default": "button"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "transparent"
+      ],
+      "default": "primary"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "medium"
+    }
+  }
+}

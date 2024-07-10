@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_ui_accordions",
+  "info": {
+    "displayName": "Accordion",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "ask": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

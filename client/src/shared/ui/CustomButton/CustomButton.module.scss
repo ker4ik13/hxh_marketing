@@ -13,6 +13,7 @@
 	width: 100%;
 	letter-spacing: 0.01em;
 	text-decoration: none;
+	text-wrap: nowrap;
 
 	&.primary {
 		@include gradient-primary(0.2s, true);
@@ -52,5 +53,11 @@
 		padding: rem(16) rem(36);
 		border-radius: $corner-medium;
 		font-size: rem(18);
+
+		@media (max-width: $max-768) {
+			font-size: rem(16);
+			padding: rem(12) rem(30);
+			border-radius: $corner-small;
+		}
 	}
 }

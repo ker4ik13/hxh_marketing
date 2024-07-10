@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_ui_text_with_links",
+  "info": {
+    "displayName": "TextWithLink",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.custom-link"
+    }
+  }
+}

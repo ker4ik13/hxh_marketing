@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_blocks_accordion_blocks",
+  "info": {
+    "displayName": "AccordionBlock",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "accordions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.accordion",
+      "required": true
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.title",
+      "required": true
+    },
+    "blockName": {
+      "type": "string",
+      "required": true,
+      "default": "accordion-block"
+    }
+  }
+}

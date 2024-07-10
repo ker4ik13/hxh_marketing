@@ -105,11 +105,9 @@ $gray-extra-light: #f7f7f7;
 
 	// Если ховер нужен
 	@if $isNeedHover == true {
-		@media (hover: hover) {
-			&:hover {
-				--gradient-primary-1: var(--gradient-primary-hover-1);
-				--gradient-primary-2: var(--gradient-primary-hover-2);
-			}
+		&:hover {
+			--gradient-primary-1: var(--gradient-primary-hover-1);
+			--gradient-primary-2: var(--gradient-primary-hover-2);
 		}
 	}
 }
@@ -127,11 +125,9 @@ $gray-extra-light: #f7f7f7;
 
 	// Если ховер нужен
 	@if $isNeedHover == true {
-		@media (hover: hover) {
-			&:hover {
-				--gradient-secondary-1: var(--gradient-secondary-hover-1);
-				--gradient-secondary-2: var(--gradient-secondary-hover-2);
-			}
+		&:hover {
+			--gradient-secondary-1: var(--gradient-secondary-hover-1);
+			--gradient-secondary-2: var(--gradient-secondary-hover-2);
 		}
 	}
 }
@@ -168,6 +164,8 @@ $corner-medium: rem(12);
 $corner-large: rem(16);
 $corner-extra-large: rem(28);
 $corner-full: rem(1000);
+// Another values
+$height-with-news: 50;
 
 // Fonts
 @mixin gilroy($weight: 400, $size: 16, $style: normal) {

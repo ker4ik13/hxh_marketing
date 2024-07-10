@@ -3,9 +3,13 @@
 // import favicon64 from '@/data/images/favicon/favicon-64x64.png';
 // import faviconSvg from '@/data/images/favicon/favicon.svg';
 // import poster from '@/data/user/source/Header.jpg';
+import { NavigationService } from '@/services/user/layout';
+import { REVALIDATE_TIME } from '@/shared';
 import { Navigation } from '@/shared/ui';
 import type { Metadata } from 'next';
 import './styles';
+
+export const revalidate = REVALIDATE_TIME;
 
 export const metadata: Metadata = {
 	creator: 'HxH Marketing',
@@ -36,11 +40,14 @@ export const metadata: Metadata = {
 	// },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
+	// Get default info
+	const navigation = await NavigationService.getNavigation();
+	const newsMessages = await NavigationService.getNewsMessages();
 	return (
 		<html lang='ru'>
 			<meta name='color-scheme' content='only dark' />
@@ -55,7 +62,7 @@ export default function RootLayout({
 				content='141414'
 			/>
 			<body>
-				<Navigation />
+				<Navigation data={navigation.data} news={newsMessages.data} />
 				<main>{children}</main>
 				{/* <Footer /> */}
 			</body>

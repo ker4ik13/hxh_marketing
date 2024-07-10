@@ -10,7 +10,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: fixed;
+	position: -webkit-sticky;
+	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 100;
@@ -19,10 +20,25 @@
 	&.hidden {
 		transform: translateY(-100%);
 	}
+
+	&.withNews {
+		& .pages {
+			@media screen and (max-width: $max-900) {
+				padding-top: calc(rem(80) + rem($height-with-news));
+				top: rem(-$height-with-news);
+			}
+		}
+	}
 }
 .container {
 	@include container-medium();
 	padding-block: rem(5);
+
+	@media (max-width: $max-900) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 }
 .pages {
 	list-style: none;
@@ -34,6 +50,23 @@
 	background-color: $text-dark;
 	@include position-center;
 	padding: rem(8);
+	transition: transform 0.2s ease-in-out;
+
+	@media (max-width: $max-900) {
+		position: absolute;
+		transform: translate(0, -100%);
+		top: 0;
+		left: 0;
+		flex-direction: column;
+		align-items: flex-end;
+		width: 100%;
+		border-radius: 0;
+		padding-top: rem(80);
+
+		&.active {
+			transform: translate(0, 0);
+		}
+	}
 }
 .navPageLink {
 	border-radius: $corner-full;
@@ -54,10 +87,74 @@
 	& > a {
 		text-decoration: none;
 		color: inherit;
+		white-space: nowrap;
 	}
 
 	&.active {
 		background-color: $primary-tint-900;
 		color: $text-dark;
+	}
+}
+
+.burger {
+	position: relative;
+	min-width: rem(26);
+	height: rem(18);
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+
+	@media (min-width: $max-900) {
+		display: none;
+	}
+
+	& span {
+		border-radius: 50px;
+	}
+
+	& span:first-child {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: rem(26);
+		height: rem(2);
+		background-color: $white;
+		border-radius: rem(50);
+		transition: 0.2s ease-in-out;
+	}
+	& span:nth-child(2n) {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translate(0, -50%);
+		width: rem(26);
+		height: rem(2);
+		background-color: $white;
+		border-radius: rem(50);
+		transition: 0.2s ease-in-out;
+	}
+
+	& span:last-child {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: rem(26);
+		height: rem(2);
+		background-color: $white;
+		border-radius: rem(50);
+		transition: 0.2s ease-in-out;
+	}
+
+	&.active {
+		& span:first-child {
+			top: 50%;
+			transform: rotate(-45deg) translate(0, -50%);
+		}
+		& span:nth-child(2n) {
+			opacity: 0;
+		}
+		& span:last-child {
+			bottom: 50%;
+			transform: rotate(45deg) translate(0%, 50%);
+		}
 	}
 }

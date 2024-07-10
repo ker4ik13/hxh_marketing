@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_blocks_review_blocks",
+  "info": {
+    "displayName": "ReviewBlock",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.title",
+      "required": true
+    },
+    "reviews": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.review-card",
+      "required": true
+    },
+    "blockName": {
+      "type": "string",
+      "required": true,
+      "default": "reviews-block"
+    }
+  }
+}

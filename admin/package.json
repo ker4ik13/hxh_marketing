@@ -1,16 +1,12 @@
 {
-  "name": "HxH Marketing: Admin",
+  "name": "admin",
   "version": "0.1.0",
   "private": true,
-  "description": "Server side for HxH Marketing",
+  "description": "A Strapi application",
   "license": "MIT",
   "author": {
-    "name": "Kirill Kireev",
-    "url": "https://t.me/ker4ik13"
+    "name": "A Strapi developer"
   },
-  "workspaces": [
-    "./src/plugins/strapi-plugin-ckeditor"
-  ],
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
@@ -19,29 +15,22 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@ckeditor/strapi-plugin-ckeditor": "^0.0.11",
-    "@exfabrica/strapi-plugin-awesome-help": "^1.0.8",
-    "@exfabrica/strapi-plugin-awesome-seo": "^1.0.0-beta.1.2",
-    "@retikolo/drag-drop-content-types": "^1.6.0",
-    "@strapi/plugin-cloud": "4.25.2",
-    "@strapi/plugin-color-picker": "^4.25.2",
-    "@strapi/plugin-documentation": "^4.25.2",
-    "@strapi/plugin-i18n": "4.25.2",
-    "@strapi/plugin-seo": "^1.9.8",
-    "@strapi/plugin-users-permissions": "4.25.2",
-    "@strapi/strapi": "4.25.2",
+    "@strapi/plugin-cloud": "4.25.3",
+    "@strapi/plugin-i18n": "4.25.3",
+    "@strapi/plugin-users-permissions": "4.25.3",
+    "@strapi/strapi": "4.25.3",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
-    "strapi-plugin-multi-select": "^1.2.3",
     "styled-components": "5.3.3"
   },
+  "devDependencies": {},
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "d8ab2c78-2ecb-445d-8302-16b711183ffd"
+    "uuid": "db9f8fc5-b98d-4c5a-8ec4-87bbb3721774"
   }
 }

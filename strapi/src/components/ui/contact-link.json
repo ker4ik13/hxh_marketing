@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_ui_contact_links",
+  "info": {
+    "displayName": "ContactLink",
+    "icon": "attachment"
+  },
+  "options": {},
+  "attributes": {
+    "socialNetwork": {
+      "type": "enumeration",
+      "enum": [
+        "Instagram",
+        "Telegram",
+        "VK",
+        "WhatsApp",
+        "Behance",
+        "OK",
+        "GitHub",
+        "Habr",
+        "Website"
+      ],
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

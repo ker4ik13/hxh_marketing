@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_ui_logos",
+  "info": {
+    "displayName": "Logo",
+    "icon": "medium"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary"
+      ],
+      "default": "primary",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

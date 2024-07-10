@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_blocks_title_with_buttons",
+  "info": {
+    "displayName": "TitleWithButtons",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.custom-link",
+      "required": false
+    },
+    "blockName": {
+      "type": "string",
+      "required": true,
+      "default": "title-with-buttons"
+    }
+  }
+}
