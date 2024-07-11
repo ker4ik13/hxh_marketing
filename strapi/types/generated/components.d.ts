@@ -201,12 +201,15 @@ export interface BlocksTitleWithButtons extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    subtitle: Attribute.Text;
-    buttons: Attribute.Component<'ui.custom-link', true>;
     blockName: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'title-with-buttons'>;
+    blockId: Attribute.String;
+    data: Attribute.Relation<
+      'blocks.title-with-buttons',
+      'oneToOne',
+      'api::title-with-buttons.title-with-buttons'
+    >;
   };
 }
 
@@ -217,11 +220,16 @@ export interface BlocksTeamBlock extends Schema.Component {
     icon: 'emotionHappy';
   };
   attributes: {
-    title: Attribute.Component<'ui.title'> & Attribute.Required;
-    team: Attribute.Component<'ui.team-person', true> & Attribute.Required;
+    title: Attribute.Component<'ui.title'>;
+    data: Attribute.Relation<
+      'blocks.team-block',
+      'oneToMany',
+      'api::team.team'
+    >;
     blockName: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'team-block'>;
+    blockId: Attribute.String;
   };
 }
 
@@ -232,11 +240,12 @@ export interface BlocksReviewBlock extends Schema.Component {
     icon: 'apps';
   };
   attributes: {
-    title: Attribute.Component<'ui.title'> & Attribute.Required;
+    title: Attribute.Component<'ui.title'>;
     reviews: Attribute.Component<'ui.review-card', true> & Attribute.Required;
     blockName: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'reviews-block'>;
+    blockId: Attribute.String;
   };
 }
 
@@ -248,11 +257,16 @@ export interface BlocksAccordionBlock extends Schema.Component {
     description: '';
   };
   attributes: {
-    accordions: Attribute.Component<'ui.accordion', true> & Attribute.Required;
-    title: Attribute.Component<'ui.title'> & Attribute.Required;
+    data: Attribute.Relation<
+      'blocks.accordion-block',
+      'oneToOne',
+      'api::accordion.accordion'
+    >;
+    title: Attribute.Component<'ui.title'>;
     blockName: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'accordion-block'>;
+    blockId: Attribute.String;
   };
 }
 

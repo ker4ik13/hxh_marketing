@@ -1,3 +1,8 @@
-import type { DefaultBlockProps } from './DefaultBlockProps';
+import { IComponentProps } from './IComponentMap';
+import { IDefaultBlockProps } from './IDefaultBlockProps';
 
-export interface IBlock<T> extends DefaultBlockProps {}
+export interface IBlock<T extends IComponentProps> extends IDefaultBlockProps {
+	data: {
+		data: T[];
+	};
+}

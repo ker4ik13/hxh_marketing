@@ -63,12 +63,22 @@ body.blur {
 	color-scheme: only dark;
 }
 
+.main {
+	display: flex;
+	flex-direction: column;
+	gap: rem(80);
+
+	@media (max-width: $max-768) {
+		gap: rem(40);
+	}
+}
+
 // Выделение текста
-// * {
-//   &::-moz-selection {
-//     background-color: rgba(87, 1, 101, 0.3);
-//   }
-//   &::selection {
-//     background-color: rgba(87, 1, 101, 0.3);
-//   }
-// }
+* {
+	&::-moz-selection {
+		background-color: rgba(30, 65, 227, 0.3);
+	}
+	&::selection {
+		background-color: rgba(30, 65, 227, 0.3);
+	}
+}

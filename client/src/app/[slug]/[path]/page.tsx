@@ -1,26 +1,6 @@
 import { PageService } from '@/services/user';
 import { getComponentFromBlockName } from '@/shared/helpers/lib';
-import type { ITitleWithButtons } from '@/shared/types/ui/blocks';
-
-const defaultProps: ITitleWithButtons = {
-	blockName: 'title-with-buttons',
-	id: 1,
-	title: 'Design & Sites',
-	buttons: [
-		{
-			children: 'Получить консультацию',
-			href: '/',
-			color: 'primary',
-			size: 'large',
-		},
-		{
-			children: 'Проекты',
-			href: '/',
-			color: 'secondary',
-			size: 'large',
-		},
-	],
-};
+import { notFound } from 'next/navigation';
 
 const SlugPage = async ({
 	params,
@@ -32,6 +12,11 @@ const SlugPage = async ({
 	const pageData = await PageService.getPageData(
 		`/${params.slug}/${params.path}`,
 	);
+
+	if (!pageData.data[0]) {
+		return notFound();
+	}
+
 	return (
 		<>
 			<title>{pageData.data[0].attributes.metaTitle}</title>
@@ -45,10 +30,14 @@ const SlugPage = async ({
 			/>
 			{pageData.data[0] &&
 				pageData.data[0].attributes.blocks &&
-				pageData.data[0].attributes.blocks.map((block) =>
-					getComponentFromBlockName(block.blockName, {
-						data: block,
-					}),
+				pageData.data[0].attributes.blocks.map((block, index) =>
+					getComponentFromBlockName(
+						block.blockName,
+						{
+							data: block,
+						},
+						index,
+					),
 				)}
 		</>
 	);

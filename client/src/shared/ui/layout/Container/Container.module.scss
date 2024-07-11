@@ -1,0 +1,25 @@
+@import '@/shared/styles/_vars';
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: rem(40);
+	position: relative;
+	z-index: 2;
+
+	@media (max-width: $max-768) {
+		gap: rem(20);
+	}
+
+	&.small {
+		@include container-small();
+	}
+
+	&.medium {
+		@include container-medium();
+	}
+
+	&.big {
+		@include container-big();
+	}
+}

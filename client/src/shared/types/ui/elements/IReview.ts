@@ -1,4 +1,4 @@
-import type { IReviewPerson } from '../IReviewPerson';
+import type { IReviewPerson } from '../shared';
 
 export interface IReview {
 	author: IReviewPerson;

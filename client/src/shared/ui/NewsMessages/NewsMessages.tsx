@@ -38,7 +38,7 @@ export const NewsMessages = ({ data }: NewsMessagesProps) => {
 			}}
 			loop
 			centeredSlides
-			allowTouchMove={true}
+			allowTouchMove={false}
 		>
 			{data.attributes.messages.map((message) => (
 				<SwiperSlide

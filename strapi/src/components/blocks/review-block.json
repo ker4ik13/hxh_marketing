@@ -10,7 +10,7 @@
       "type": "component",
       "repeatable": false,
       "component": "ui.title",
-      "required": true
+      "required": false
     },
     "reviews": {
       "type": "component",
@@ -22,6 +22,10 @@
       "type": "string",
       "required": true,
       "default": "reviews-block"
+    },
+    "blockId": {
+      "type": "string",
+      "required": false
     }
   }
 }

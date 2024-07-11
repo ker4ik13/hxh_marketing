@@ -10,18 +10,21 @@
       "type": "component",
       "repeatable": false,
       "component": "ui.title",
-      "required": true
+      "required": false
     },
-    "team": {
-      "type": "component",
-      "repeatable": true,
-      "component": "ui.team-person",
-      "required": true
+    "data": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team.team"
     },
     "blockName": {
       "type": "string",
       "required": true,
       "default": "team-block"
+    },
+    "blockId": {
+      "type": "string",
+      "required": false
     }
   }
 }

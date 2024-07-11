@@ -7,23 +7,19 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
-    },
-    "subtitle": {
-      "type": "text"
-    },
-    "buttons": {
-      "type": "component",
-      "repeatable": true,
-      "component": "ui.custom-link",
-      "required": false
-    },
     "blockName": {
       "type": "string",
       "required": true,
       "default": "title-with-buttons"
+    },
+    "blockId": {
+      "type": "string",
+      "required": false
+    },
+    "data": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::title-with-buttons.title-with-buttons"
     }
   }
 }

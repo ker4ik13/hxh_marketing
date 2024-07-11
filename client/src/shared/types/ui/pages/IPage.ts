@@ -1,4 +1,4 @@
-import type { IBlock } from '../blocks/IBlock';
+import type { IBlock } from '../blocks';
 
 export interface IPage {
 	id: number;

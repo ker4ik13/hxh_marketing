@@ -1,0 +1,10 @@
+@import '@/shared/styles/_vars';
+
+.block {
+	padding: rem(40) 0;
+	width: 100%;
+
+	@media (max-width: $max-768) {
+		padding: rem(20) 0;
+	}
+}

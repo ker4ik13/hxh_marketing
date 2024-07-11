@@ -2,11 +2,21 @@
 
 .logo {
 	@include gilroy(700, 24);
-	@include gradient-primary(0.1s, true);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 	line-height: 1;
 	cursor: pointer;
 	text-decoration: none;
+
+	&.primary {
+		@include gradient-primary(0.1s, true);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	&.secondary {
+		@include gradient-secondary(0.1s, true);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 }

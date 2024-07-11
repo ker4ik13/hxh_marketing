@@ -1,0 +1,58 @@
+@import '@/shared/styles/_vars';
+
+.inputWrapper {
+	width: 100%;
+	display: flex;
+	border-radius: $corner-large;
+	background-color: $gray-extra-light;
+	position: relative;
+}
+.input {
+	width: 100%;
+	border: 0;
+	outline: none;
+	background: transparent;
+	color: $text-dark;
+	@include gilroy(400, 18);
+	padding-bottom: rem(12);
+	padding: rem(26) rem(40) rem(12);
+
+	&::-webkit-input-placeholder {
+		@include gilroy(400, 18);
+		color: $gray-medium;
+	}
+
+	&::-moz-placeholder {
+		@include gilroy(400, 18);
+		color: $gray-medium;
+	}
+
+	&:-ms-input-placeholder {
+		@include gilroy(400, 18);
+		color: $gray-medium;
+	}
+
+	&::-ms-input-placeholder {
+		@include gilroy(400, 18);
+		color: $gray-medium;
+	}
+
+	&::placeholder {
+		@include gilroy(400, 18);
+		color: $gray-medium;
+	}
+}
+.label {
+	@include gilroy(400, 12);
+	cursor: text;
+	color: $gray-dark;
+	padding-left: rem(2);
+	position: absolute;
+	top: rem(8);
+	left: rem(40);
+	z-index: 0;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

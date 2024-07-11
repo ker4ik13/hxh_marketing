@@ -1,1 +1,1 @@
-export * from './PageService';
+export * from './page.service';

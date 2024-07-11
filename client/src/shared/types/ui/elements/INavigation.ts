@@ -1,4 +1,4 @@
-import type { ILink } from '../ILink';
+import type { ILink } from '../shared';
 
 export interface INavigation {
 	id: number;

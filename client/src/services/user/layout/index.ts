@@ -1,1 +1,2 @@
-export * from './NavigationService';
+export * from './footer.service';
+export * from './navigation.service';

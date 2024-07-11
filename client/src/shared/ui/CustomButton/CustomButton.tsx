@@ -1,9 +1,10 @@
+import { getIconFromName } from '@/shared/helpers/lib';
 import type {
 	CustomButtonProps,
 	CustomButtonSize,
 	CustomButtonType,
 	CustomLinkProps,
-} from '@/shared/types/ui';
+} from '@/shared/types/ui/shared';
 import Link from 'next/link';
 import styles from './CustomButton.module.scss';
 
@@ -43,14 +44,17 @@ export const CustomButton = {
 		size,
 		target,
 		className,
+		icon,
 	}: CustomLinkProps) => {
 		return (
 			<Link
 				href={href}
 				target={target}
 				className={`${styles.button} ${getButtonTypeStyles(color)} ${getButtonSizeStyles(size)} ${className ? className : ''}`}
+				aria-label={children}
 			>
 				{children}
+				{icon && getIconFromName(icon, styles.icon)}
 			</Link>
 		);
 	},
@@ -62,6 +66,7 @@ export const CustomButton = {
 		type,
 		disabled,
 		className,
+		icon,
 	}: CustomButtonProps) => {
 		return (
 			<button
@@ -69,8 +74,10 @@ export const CustomButton = {
 				type={type}
 				disabled={disabled}
 				onClick={onClick}
+				aria-label={children}
 			>
 				{children}
+				{icon && getIconFromName(icon, styles.icon)}
 			</button>
 		);
 	},

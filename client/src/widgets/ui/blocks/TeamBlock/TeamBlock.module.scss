@@ -1,0 +1,13 @@
+@import '@/shared/styles/_vars';
+
+.team {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(rem(300), 1fr));
+	grid-template-rows: auto;
+	gap: rem(30);
+
+	@media (max-width: $max-768) {
+		grid-template-columns: 1fr;
+		gap: rem(20);
+	}
+}

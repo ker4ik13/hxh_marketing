@@ -23,6 +23,10 @@
 	&.secondary {
 		color: $text-black;
 		@include gradient-secondary(0.2s, true);
+
+		& .icon path {
+			fill: $text-black;
+		}
 	}
 
 	&.transparent {
@@ -31,6 +35,10 @@
 		border: 1px solid rgba(1, 109, 236, 0.6);
 		outline: none;
 		color: $text-black;
+
+		& .icon path {
+			fill: $text-black;
+		}
 
 		&:hover {
 			background: rgba(221, 236, 255, 0.6);
@@ -41,23 +49,34 @@
 		padding: rem(8) rem(16);
 		border-radius: $corner-small;
 		font-size: rem(14);
+		gap: rem(10);
 	}
 
 	&.medium {
 		padding: rem(12) rem(30);
 		border-radius: $corner-small;
 		font-size: rem(16);
+		gap: rem(16);
 	}
 
 	&.large {
 		padding: rem(16) rem(36);
 		border-radius: $corner-medium;
 		font-size: rem(18);
+		gap: rem(30);
 
 		@media (max-width: $max-768) {
 			font-size: rem(16);
 			padding: rem(12) rem(30);
 			border-radius: $corner-small;
 		}
+	}
+}
+.icon {
+	max-height: rem(20);
+	height: 100%;
+
+	& path {
+		fill: $white;
 	}
 }

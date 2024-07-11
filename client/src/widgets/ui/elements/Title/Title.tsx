@@ -1,13 +1,17 @@
-import type { ITitle } from '@/shared/types/ui';
+import type { ITitle } from '@/shared/types/ui/elements';
 import { ArrowIcon } from '@/shared/ui/icons';
 import Link from 'next/link';
 import styles from './Title.module.scss';
 
 interface TitleProps {
-	title: ITitle;
+	title?: ITitle;
 }
 
 export const Title = ({ title }: TitleProps) => {
+	if (!title || !title.label) {
+		return;
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>

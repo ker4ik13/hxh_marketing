@@ -1,32 +1,26 @@
-import { MainScreen, MainScreenProps } from '@/widgets/ui/blocks';
+import type { IComponentMap, IComponentProps } from '@/shared/types/ui/blocks';
+import {
+	AccordionBlock,
+	TeamBlock,
+	TitleWithButtons,
+} from '@/widgets/ui/blocks';
+import { isPropsValid } from './isPropsValid';
 
-interface ComponentMap {
-	[key: string]: React.ComponentType<any>;
-}
-type PropsMap = {
-	[key: string]: any;
-};
-
-type ComponentProps = {
-	data: MainScreenProps | any;
-};
-
-const components: ComponentMap = {
-	'title-with-buttons': MainScreen,
-};
-
-const isPropsValid = <T extends {}>(props: any, propType: T): props is T => {
-	return Object.keys(propType).every((key) => key in props);
+const components: IComponentMap = {
+	'title-with-buttons': TitleWithButtons,
+	'accordion-block': AccordionBlock,
+	'team-block': TeamBlock,
 };
 
 export const getComponentFromBlockName = (
 	blockName: keyof typeof components,
-	props: ComponentProps,
+	props: IComponentProps,
+	index: number,
 ): React.ReactNode | null => {
 	const Component = components[blockName];
 	if (Component) {
 		if (isPropsValid(props, props)) {
-			return <Component {...props} />;
+			return <Component {...props} key={index} />;
 		} else {
 			console.error(`Invalid props for block "${blockName}"`);
 			return null;

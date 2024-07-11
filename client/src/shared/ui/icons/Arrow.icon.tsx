@@ -1,4 +1,4 @@
-import type { IconType } from '@/shared/types/ui';
+import type { IconType } from '@/shared/types/ui/shared';
 
 export const ArrowIcon = ({ className }: IconType) => {
 	return (

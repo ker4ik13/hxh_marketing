@@ -7,22 +7,25 @@
   },
   "options": {},
   "attributes": {
-    "accordions": {
-      "type": "component",
-      "repeatable": true,
-      "component": "ui.accordion",
-      "required": true
+    "data": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::accordion.accordion"
     },
     "title": {
       "type": "component",
       "repeatable": false,
       "component": "ui.title",
-      "required": true
+      "required": false
     },
     "blockName": {
       "type": "string",
       "required": true,
       "default": "accordion-block"
+    },
+    "blockId": {
+      "type": "string",
+      "required": false
     }
   }
 }

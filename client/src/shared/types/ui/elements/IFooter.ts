@@ -1,5 +1,4 @@
-import type { IContactLink } from '../IContactLink';
-import type { ILink } from '../ILink';
+import type { IContactLink, ILink } from '../shared';
 import type { ILogo } from './ILogo';
 import type { ITextWithLink } from './ITextWithLink';
 

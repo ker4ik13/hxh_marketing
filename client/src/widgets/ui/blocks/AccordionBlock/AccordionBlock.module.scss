@@ -1,0 +1,12 @@
+@import '@/shared/styles/_vars';
+
+.accordions {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: rem(40);
+
+	@media (max-width: $max-768) {
+		gap: rem(20);
+	}
+}
