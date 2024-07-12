@@ -1,4 +1,5 @@
 import bgHeaderImage from '@/data/user/images/Bg image header.png';
+import { getAnimationStyle } from '@/shared/helpers/lib';
 import type { ITitleWithButtonsProps } from '@/shared/types/ui/blocks';
 import { CustomButton } from '@/shared/ui';
 import { Container } from '@/shared/ui/layout';
@@ -18,8 +19,10 @@ export const TitleWithButtons = ({ data }: Props) => {
 				alt={''}
 				width={1920}
 				height={1080}
+				quality={100}
+				priority
 			/>
-			<Container size='medium'>
+			<Container className={getAnimationStyle(data.animation)} size='medium'>
 				<div className={styles.content}>
 					<div className={styles.titleWrapper}>
 						<h1 className={styles.title}>

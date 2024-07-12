@@ -6,16 +6,40 @@
 	border-radius: $corner-large;
 	background-color: $gray-extra-light;
 	position: relative;
+	overflow: hidden;
+
+	&.error {
+		.label {
+			& span {
+				margin-left: rem(10);
+				color: $state-error;
+			}
+		}
+	}
 }
 .input {
 	width: 100%;
 	border: 0;
 	outline: none;
-	background: transparent;
+	background-color: transparent;
 	color: $text-dark;
 	@include gilroy(400, 18);
 	padding-bottom: rem(12);
 	padding: rem(26) rem(40) rem(12);
+	transition: 0.2s;
+
+	&:focus {
+		background-color: $white;
+	}
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus {
+		border: 0px;
+		opacity: 1;
+		-webkit-box-shadow: inset 0 0 0 50px $gray-extra-light;
+		-webkit-text-fill-color: $text-dark;
+	}
 
 	&::-webkit-input-placeholder {
 		@include gilroy(400, 18);

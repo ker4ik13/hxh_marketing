@@ -1,0 +1,174 @@
+@import '@/shared/styles/_vars';
+
+.serviceCard {
+	padding: rem(20);
+	border-radius: $corner-large;
+	background-color: $primary-tint-900;
+	flex: 1 1 100%;
+	display: flex;
+	flex-direction: column;
+	gap: rem(20);
+	align-items: stretch;
+
+	@media (max-width: $max-768) {
+		gap: rem(16);
+	}
+
+	&:nth-child(4n-3),
+	&:nth-child(4n) {
+		grid-column: span 3;
+
+		@media (max-width: $max-1000) {
+			grid-column: span 1;
+		}
+	}
+
+	&:nth-child(4n-2),
+	&:nth-child(4n-1) {
+		grid-column: span 2;
+		@media (max-width: $max-1000) {
+			grid-column: span 1;
+		}
+	}
+
+	/* Если элемент один на строке */
+	&:only-child {
+		grid-column: span 5;
+		@media (max-width: $max-1000) {
+			grid-column: span 1;
+		}
+	}
+
+	&:nth-last-child(1):nth-child(4n-3),
+	&:nth-last-child(1):nth-child(4n-1) {
+		grid-column: span 5;
+		@media (max-width: $max-1000) {
+			grid-column: span 1;
+		}
+	}
+}
+.header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+	gap: rem(20);
+}
+.titleWrapper {
+	display: flex;
+	align-items: center;
+	gap: rem(10);
+}
+.iconWrapper {
+	border-radius: $corner-medium;
+	border: rem(1) solid $gray-light;
+	padding: rem(16);
+	max-width: rem(60);
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1/1;
+	background-color: $white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@media (max-width: $max-768) {
+		max-width: rem(30);
+		border-radius: $corner-small;
+		padding: rem(8);
+	}
+}
+.previewIcon {
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1/1;
+	max-width: rem(30);
+
+	& path {
+		fill: $primary-tint-100;
+	}
+
+	@media (max-width: $max-768) {
+		max-width: rem(16);
+	}
+}
+.title {
+	@include gilroy(500, 28);
+	color: $text-black;
+	text-transform: uppercase;
+
+	@media (max-width: $max-768) {
+		font-size: rem(18);
+	}
+}
+.linkIcon {
+	width: 100%;
+	aspect-ratio: 1/1;
+	max-width: rem(30);
+	min-width: rem(30);
+	background: transparent;
+	text-decoration: none;
+	color: transparent;
+	padding: 0 0 rem(10) rem(10);
+
+	@media (max-width: $max-768) {
+		min-width: rem(22);
+		max-width: rem(22);
+	}
+
+	& svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	& svg path {
+		stroke: $primary-tint-200;
+	}
+}
+.content {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: rem(20);
+
+	@media (max-width: $max-768) {
+		gap: rem(16);
+	}
+}
+.description {
+	@include gilroy(400, 18);
+	color: $text-dark;
+	line-height: 1.5;
+	letter-spacing: 0.02em;
+
+	@media (max-width: $max-768) {
+		font-size: rem(16);
+	}
+}
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	gap: rem(10);
+
+	@media (max-width: $max-500) {
+		flex-direction: column-reverse;
+		gap: rem(15);
+		align-items: flex-end;
+
+		.button {
+			width: 100%;
+		}
+	}
+}
+.price {
+	@include gilroy(500, 28);
+	color: $text-black;
+	text-transform: uppercase;
+
+	@media (max-width: $max-768) {
+		font-size: rem(18);
+	}
+}

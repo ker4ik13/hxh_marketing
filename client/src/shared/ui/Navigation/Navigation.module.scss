@@ -18,7 +18,7 @@
 	transition: all 0.2s ease-in-out;
 
 	&.hidden {
-		transform: translateY(-100%);
+		transform: translate3d(0, -100%, 0);
 	}
 
 	&.withNews {
@@ -54,7 +54,7 @@
 
 	@media (max-width: $max-900) {
 		position: absolute;
-		transform: translate(0, -100%);
+		transform: translate3d(0, -100%, 0);
 		top: 0;
 		left: 0;
 		flex-direction: column;
@@ -64,7 +64,7 @@
 		padding-top: rem(80);
 
 		&.active {
-			transform: translate(0, 0);
+			transform: translate3d(0, 0, 0);
 		}
 	}
 }
@@ -125,7 +125,7 @@
 		position: absolute;
 		top: 50%;
 		left: 0;
-		transform: translate(0, -50%);
+		transform: translate3d(0, -50%, 0);
 		width: rem(26);
 		height: rem(2);
 		background-color: $white;
@@ -147,14 +147,14 @@
 	&.active {
 		& span:first-child {
 			top: 50%;
-			transform: rotate(-45deg) translate(0, -50%);
+			transform: rotate(-45deg) translate3d(0, -50%, 0);
 		}
 		& span:nth-child(2n) {
 			opacity: 0;
 		}
 		& span:last-child {
 			bottom: 50%;
-			transform: rotate(45deg) translate(0%, 50%);
+			transform: rotate(45deg) translate3d(0, 50%, 0);
 		}
 	}
 }

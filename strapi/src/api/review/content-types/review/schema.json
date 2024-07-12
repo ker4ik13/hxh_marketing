@@ -37,17 +37,7 @@
       },
       "component": "ui.review-card"
     },
-    "blockName": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string",
-      "required": true,
-      "default": "reviews-block"
-    },
-    "uniqueName": {
+    "uniqueBlockName": {
       "pluginOptions": {
         "i18n": {
           "localized": true

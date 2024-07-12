@@ -1,7 +1,12 @@
 @import '@/shared/styles/_vars';
 
+$animation-px: rem(100);
+
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: rem(80);
+	width: 100vw;
+	background-color: $text-black;
 }
 body {
 	scroll-behavior: smooth;
@@ -24,7 +29,7 @@ body.overflow {
 		height: 100%;
 		opacity: 0;
 		visibility: hidden;
-		background: rgba(40, 35, 32, 0.7);
+		background: rgba(0, 0, 0, 0.3);
 		-webkit-backdrop-filter: blur(7px);
 		backdrop-filter: blur(7px);
 	}
@@ -35,29 +40,31 @@ body.blur {
 		visibility: visible;
 	}
 }
+.animation-block {
+	opacity: 0;
+	transition:
+		transform 1s,
+		opacity 1s;
 
-// body.overflow {
-// 	overflow: hidden;
-// }
-// body.blur {
-// 	position: relative;
-// 	overflow: hidden;
-// 	transition: 0.2s;
+	// Directions
+	&.from-left-to-right {
+		transform: translate3d(-$animation-px, 0, 0);
+	}
+	&.from-right-to-left {
+		transform: translate3d($animation-px, 0, 0);
+	}
+	&.from-top-to-bottom {
+		transform: translate3d(0, -$animation-px, 0);
+	}
+	&.from-bottom-to-top {
+		transform: translate3d(0, $animation-px, 0);
+	}
 
-// 	&:before {
-// 		content: '';
-// 		transition: 0.2s;
-// 		position: absolute;
-// 		top: 0;
-// 		left: 0;
-// 		z-index: 20;
-// 		width: 100%;
-// 		height: 100%;
-// 		background: rgba(40, 35, 32, 0.7);
-// 		-webkit-backdrop-filter: blur(7px);
-// 		backdrop-filter: blur(7px);
-// 	}
-// }
+	&.show-animation {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
 
 :root {
 	color-scheme: only dark;
@@ -74,11 +81,11 @@ body.blur {
 }
 
 // Выделение текста
-* {
-	&::-moz-selection {
-		background-color: rgba(30, 65, 227, 0.3);
-	}
-	&::selection {
-		background-color: rgba(30, 65, 227, 0.3);
-	}
-}
+// * {
+// 	&::-moz-selection {
+// 		background-color: rgba(30, 65, 227, 0.3);
+// 	}
+// 	&::selection {
+// 		background-color: rgba(30, 65, 227, 0.3);
+// 	}
+// }

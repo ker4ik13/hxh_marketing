@@ -1,6 +1,6 @@
 export interface IconType {
 	className?: string;
-	color?: 'dark' | 'light';
+	color?: 'dark' | 'light' | string;
 }
 
 export type IIcons =

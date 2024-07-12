@@ -1,5 +1,6 @@
 import { PageService } from '@/services/user';
 import { getComponentFromBlockName } from '@/shared/helpers/lib';
+import { ScrollComponent } from '@/shared/ui/helpers';
 import { notFound } from 'next/navigation';
 
 const SlugPage = async ({ params }: { params: { slug: string } }) => {
@@ -25,17 +26,19 @@ const SlugPage = async ({ params }: { params: { slug: string } }) => {
 				name='keywords'
 				content={pageData.data[0].attributes.metaKeywords}
 			/>
-			{pageData.data[0] &&
-				pageData.data[0].attributes.blocks &&
-				pageData.data[0].attributes.blocks.map((block, index) =>
-					getComponentFromBlockName(
-						block.blockName,
-						{
-							data: block,
-						},
-						index,
-					),
-				)}
+			<ScrollComponent>
+				{pageData.data[0] &&
+					pageData.data[0].attributes.blocks &&
+					pageData.data[0].attributes.blocks.map((block, index) =>
+						getComponentFromBlockName(
+							block.blockName,
+							{
+								data: block,
+							},
+							index,
+						),
+					)}
+			</ScrollComponent>
 		</>
 	);
 };

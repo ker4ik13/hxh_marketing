@@ -1,1 +1,1 @@
-export * from './ICollectData.form';
+export * from './ICollectDataForm';

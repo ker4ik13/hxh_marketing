@@ -1,14 +1,14 @@
 import { getIconFromName } from '@/shared/helpers/lib';
 import type {
-	CustomButtonProps,
-	CustomButtonSize,
-	CustomButtonType,
-	CustomLinkProps,
+	ICustomButtonProps,
+	ICustomButtonSize,
+	ICustomButtonType,
+	ICustomLinkProps,
 } from '@/shared/types/ui/shared';
 import Link from 'next/link';
 import styles from './CustomButton.module.scss';
 
-const getButtonTypeStyles = (type?: CustomButtonType) => {
+const getButtonTypeStyles = (type?: ICustomButtonType) => {
 	switch (type) {
 		case 'primary':
 			return styles.primary;
@@ -21,7 +21,7 @@ const getButtonTypeStyles = (type?: CustomButtonType) => {
 	}
 };
 
-const getButtonSizeStyles = (size?: CustomButtonSize) => {
+const getButtonSizeStyles = (size?: ICustomButtonSize) => {
 	switch (size) {
 		case 'small':
 			return styles.small;
@@ -45,7 +45,7 @@ export const CustomButton = {
 		target,
 		className,
 		icon,
-	}: CustomLinkProps) => {
+	}: ICustomLinkProps) => {
 		return (
 			<Link
 				href={href}
@@ -67,7 +67,7 @@ export const CustomButton = {
 		disabled,
 		className,
 		icon,
-	}: CustomButtonProps) => {
+	}: ICustomButtonProps) => {
 		return (
 			<button
 				className={`${styles.button} ${getButtonTypeStyles(color)} ${getButtonSizeStyles(size)} ${className ? className : ''}`}

@@ -2,7 +2,8 @@
   "collectionName": "components_ui_custom_buttons",
   "info": {
     "displayName": "CustomButton",
-    "icon": "cursor"
+    "icon": "cursor",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -40,6 +41,22 @@
         "large"
       ],
       "default": "medium"
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "VK",
+        "Behance",
+        "Instagram",
+        "WhatsApp",
+        "Telegram",
+        "GitHub",
+        "OK",
+        "Habr",
+        "Website",
+        "Arrow",
+        "Send"
+      ]
     }
   }
 }

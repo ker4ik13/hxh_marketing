@@ -122,11 +122,54 @@ export interface UiLabelWithValue extends Schema.Component {
   };
 }
 
+export interface UiInputProps extends Schema.Component {
+  collectionName: 'components_ui_input_props';
+  info: {
+    displayName: 'InputProps';
+    icon: 'pencil';
+    description: '';
+  };
+  attributes: {
+    required: Attribute.Boolean;
+    type: Attribute.Enumeration<
+      [
+        'text',
+        'button',
+        'checkbox',
+        'color',
+        'date',
+        'datetime-local',
+        'email',
+        'file',
+        'hidden',
+        'image',
+        'month',
+        'number',
+        'password',
+        'radio',
+        'range',
+        'reset',
+        'search',
+        'submit',
+        'tel',
+        'time',
+        'url',
+        'week'
+      ]
+    > &
+      Attribute.DefaultTo<'text'>;
+    placeholder: Attribute.String;
+    name: Attribute.String & Attribute.Required;
+    autoComplete: Attribute.String;
+  };
+}
+
 export interface UiCustomLink extends Schema.Component {
   collectionName: 'components_ui_custom_links';
   info: {
     displayName: 'CustomLink';
     icon: 'cursor';
+    description: '';
   };
   attributes: {
     children: Attribute.String & Attribute.Required;
@@ -135,6 +178,33 @@ export interface UiCustomLink extends Schema.Component {
     color: Attribute.Enumeration<['primary', 'secondary', 'transparent']>;
     size: Attribute.Enumeration<['small', 'medium', 'large']> &
       Attribute.DefaultTo<'medium'>;
+    icon: Attribute.Enumeration<
+      [
+        'VK',
+        'Behance',
+        'Instagram',
+        'WhatsApp',
+        'Telegram',
+        'GitHub',
+        'OK',
+        'Habr',
+        'Website',
+        'Arrow',
+        'Send'
+      ]
+    >;
+  };
+}
+
+export interface UiCustomInput extends Schema.Component {
+  collectionName: 'components_ui_custom_inputs';
+  info: {
+    displayName: 'CustomInput';
+    icon: 'pencil';
+  };
+  attributes: {
+    label: Attribute.String;
+    inputProps: Attribute.Component<'ui.input-props'>;
   };
 }
 
@@ -143,6 +213,7 @@ export interface UiCustomButton extends Schema.Component {
   info: {
     displayName: 'CustomButton';
     icon: 'cursor';
+    description: '';
   };
   attributes: {
     children: Attribute.String & Attribute.Required;
@@ -153,6 +224,21 @@ export interface UiCustomButton extends Schema.Component {
       Attribute.DefaultTo<'primary'>;
     size: Attribute.Enumeration<['small', 'medium', 'large']> &
       Attribute.DefaultTo<'medium'>;
+    icon: Attribute.Enumeration<
+      [
+        'VK',
+        'Behance',
+        'Instagram',
+        'WhatsApp',
+        'Telegram',
+        'GitHub',
+        'OK',
+        'Habr',
+        'Website',
+        'Arrow',
+        'Send'
+      ]
+    >;
   };
 }
 
@@ -210,6 +296,15 @@ export interface BlocksTitleWithButtons extends Schema.Component {
       'oneToOne',
       'api::title-with-buttons.title-with-buttons'
     >;
+    animation: Attribute.Enumeration<
+      [
+        'from-bottom-to-top',
+        'from-top-to-bottom',
+        'from-left-to-right',
+        'from-right-to-left'
+      ]
+    > &
+      Attribute.DefaultTo<'from-bottom-to-top'>;
   };
 }
 
@@ -230,6 +325,15 @@ export interface BlocksTeamBlock extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'team-block'>;
     blockId: Attribute.String;
+    animation: Attribute.Enumeration<
+      [
+        'from-bottom-to-top',
+        'from-top-to-bottom',
+        'from-left-to-right',
+        'from-right-to-left'
+      ]
+    > &
+      Attribute.DefaultTo<'from-bottom-to-top'>;
   };
 }
 
@@ -246,6 +350,40 @@ export interface BlocksReviewBlock extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'reviews-block'>;
     blockId: Attribute.String;
+    animation: Attribute.Enumeration<
+      [
+        'from-bottom-to-top',
+        'from-top-to-bottom',
+        'from-left-to-right',
+        'from-right-to-left'
+      ]
+    > &
+      Attribute.DefaultTo<'from-bottom-to-top'>;
+  };
+}
+
+export interface BlocksFormBlock extends Schema.Component {
+  collectionName: 'components_blocks_form_blocks';
+  info: {
+    displayName: 'FormBlock';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    blockName: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'form-block'>;
+    blockId: Attribute.String;
+    animation: Attribute.Enumeration<
+      [
+        'from-bottom-to-top',
+        'from-top-to-bottom',
+        'from-left-to-right',
+        'from-right-to-left'
+      ]
+    > &
+      Attribute.DefaultTo<'from-bottom-to-top'>;
+    data: Attribute.Relation<'blocks.form-block', 'oneToOne', 'api::form.form'>;
   };
 }
 
@@ -267,6 +405,15 @@ export interface BlocksAccordionBlock extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'accordion-block'>;
     blockId: Attribute.String;
+    animation: Attribute.Enumeration<
+      [
+        'from-bottom-to-top',
+        'from-top-to-bottom',
+        'from-left-to-right',
+        'from-right-to-left'
+      ]
+    > &
+      Attribute.DefaultTo<'from-bottom-to-top'>;
   };
 }
 
@@ -282,13 +429,16 @@ declare module '@strapi/types' {
       'ui.logo': UiLogo;
       'ui.link': UiLink;
       'ui.label-with-value': UiLabelWithValue;
+      'ui.input-props': UiInputProps;
       'ui.custom-link': UiCustomLink;
+      'ui.custom-input': UiCustomInput;
       'ui.custom-button': UiCustomButton;
       'ui.contact-link': UiContactLink;
       'ui.accordion': UiAccordion;
       'blocks.title-with-buttons': BlocksTitleWithButtons;
       'blocks.team-block': BlocksTeamBlock;
       'blocks.review-block': BlocksReviewBlock;
+      'blocks.form-block': BlocksFormBlock;
       'blocks.accordion-block': BlocksAccordionBlock;
     }
   }

@@ -1,9 +1,9 @@
 @import '@/shared/styles/_vars';
 
 .mainScreen {
-	min-height: 100vh;
+	min-height: 80vh;
 	width: 100%;
-	background: $text-black;
+	background-color: $text-black;
 	position: relative;
 	padding: rem(80) 0;
 
@@ -23,6 +23,7 @@
 	object-position: center;
 	-webkit-filter: blur(rem(10));
 	filter: blur(rem(10));
+	// transform: scale(1.1);
 }
 .content {
 	display: flex;

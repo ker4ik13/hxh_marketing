@@ -1,4 +1,4 @@
-import type { CustomLinkProps } from '../shared';
+import type { ICustomLinkProps } from '../shared';
 import type { IDefaultBlockProps } from './IDefaultBlockProps';
 
 export interface ITitleWithButtons {
@@ -6,7 +6,7 @@ export interface ITitleWithButtons {
 	attributes: {
 		title: string;
 		subtitle?: string;
-		buttons?: CustomLinkProps[];
+		buttons?: ICustomLinkProps[];
 		uniqueBlockName: string;
 		locale?: string;
 		createdAt: string;

@@ -4,7 +4,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	text-align: center;
 	gap: rem(10);
 	@include gilroy(500);
 	cursor: pointer;
@@ -13,11 +12,16 @@
 	width: 100%;
 	letter-spacing: 0.01em;
 	text-decoration: none;
-	text-wrap: nowrap;
+	text-wrap: pretty;
 
 	&.primary {
 		@include gradient-primary(0.2s, true);
 		color: $white;
+
+		&:disabled {
+			background: $gray-dark;
+			cursor: default;
+		}
 	}
 
 	&.secondary {
@@ -26,6 +30,11 @@
 
 		& .icon path {
 			fill: $text-black;
+		}
+
+		&:disabled {
+			background: $gray-medium;
+			cursor: default;
 		}
 	}
 
@@ -38,6 +47,11 @@
 
 		& .icon path {
 			fill: $text-black;
+		}
+
+		&:disabled {
+			background: $gray-medium;
+			cursor: default;
 		}
 
 		&:hover {
@@ -68,13 +82,14 @@
 		@media (max-width: $max-768) {
 			font-size: rem(16);
 			padding: rem(12) rem(30);
-			border-radius: $corner-small;
 		}
 	}
 }
 .icon {
 	max-height: rem(20);
 	height: 100%;
+	min-height: rem(12);
+	min-width: rem(12);
 
 	& path {
 		fill: $white;

@@ -1,4 +1,4 @@
-import type { CustomLinkProps } from '../shared';
+import type { ICustomLinkProps } from '../shared';
 
 export interface INewsMessages {
 	id: number;
@@ -9,7 +9,7 @@ export interface INewsMessages {
 			id: number;
 			label: string;
 			color: 'green' | 'yellow' | 'red' | 'gray';
-			link?: CustomLinkProps;
+			link?: ICustomLinkProps;
 		}[];
 		createdAt: string;
 		updatedAt?: string;

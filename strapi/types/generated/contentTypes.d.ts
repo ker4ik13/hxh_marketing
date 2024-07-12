@@ -956,6 +956,82 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
+export interface ApiFormForm extends Schema.CollectionType {
+  collectionName: 'forms';
+  info: {
+    singularName: 'form';
+    pluralName: 'forms';
+    displayName: 'Forms';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contentPosition: Attribute.Enumeration<['left', 'right']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'left'>;
+    inputs: Attribute.Component<'ui.custom-input', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    button: Attribute.Component<'ui.custom-button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    uniqueBlockName: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::form.form', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::form.form', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::form.form',
+      'oneToMany',
+      'api::form.form'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiNavigationNavigation extends Schema.SingleType {
   collectionName: 'navigations';
   info: {
@@ -1087,7 +1163,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.review-block',
         'blocks.accordion-block',
         'blocks.team-block',
-        'blocks.title-with-buttons'
+        'blocks.title-with-buttons',
+        'blocks.form-block'
       ]
     > &
       Attribute.Required &
@@ -1174,15 +1251,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    blockName: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }> &
-      Attribute.DefaultTo<'reviews-block'>;
-    uniqueName: Attribute.String &
+    uniqueBlockName: Attribute.String &
       Attribute.Required &
       Attribute.Unique &
       Attribute.SetPluginOptions<{
@@ -1379,6 +1448,7 @@ declare module '@strapi/types' {
       'plugin::telegram-bot-strapi.telegram': PluginTelegramBotStrapiTelegram;
       'api::accordion.accordion': ApiAccordionAccordion;
       'api::footer.footer': ApiFooterFooter;
+      'api::form.form': ApiFormForm;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::news-message.news-message': ApiNewsMessageNewsMessage;
       'api::page.page': ApiPagePage;

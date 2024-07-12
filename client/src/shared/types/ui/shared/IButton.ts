@@ -1,25 +1,25 @@
 import type { IIcons } from './IconType';
 
-export type CustomButtonType = 'primary' | 'secondary' | 'transparent';
-export type CustomButtonSize = 'small' | 'medium' | 'large';
+export type ICustomButtonType = 'primary' | 'secondary' | 'transparent';
+export type ICustomButtonSize = 'small' | 'medium' | 'large';
 
-export interface CustomButtonProps {
+export interface ICustomButtonProps {
 	children: string;
 	onClick?: () => void;
 	disabled?: boolean;
 	type?: 'button' | 'submit' | 'reset';
-	color?: CustomButtonType;
-	size?: CustomButtonSize;
+	color?: ICustomButtonType;
+	size?: ICustomButtonSize;
 	className?: string;
 	icon?: IIcons;
 }
 
-export interface CustomLinkProps {
+export interface ICustomLinkProps {
 	children: string;
 	href: string;
 	target?: '_blank' | '_self' | '_parent' | '_top';
-	color?: CustomButtonType;
-	size?: CustomButtonSize;
+	color?: ICustomButtonType;
+	size?: ICustomButtonSize;
 	className?: string;
 	icon?: IIcons;
 }

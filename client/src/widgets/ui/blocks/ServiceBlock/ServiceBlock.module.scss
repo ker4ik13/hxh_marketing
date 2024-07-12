@@ -1,0 +1,12 @@
+@import '@/shared/styles/_vars';
+
+.services {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 30px;
+
+	@media (max-width: $max-1000) {
+		grid-template-columns: 1fr;
+	}
+}

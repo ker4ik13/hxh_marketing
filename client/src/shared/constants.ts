@@ -8,6 +8,18 @@ export const GOOGLE_ANALYTICS = undefined;
 export const MAIN_ARTICLES_COUNT = 4; // Сколько выводить статей на главной странице
 export const REVALIDATE_TIME = 10;
 
+// Классы
+export const ANIMATION_CLASSES = {
+	animationBlock: 'animation-block',
+	animationBlockActive: 'show-animation',
+	direction: {
+		'from-left-to-right': 'from-left-to-right',
+		'from-right-to-left': 'from-right-to-left',
+		'from-top-to-bottom': 'from-top-to-bottom',
+		'from-bottom-to-top': 'from-bottom-to-top',
+	},
+};
+
 export const appLinks = {
 	user: {
 		main: '/',

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_ui_custom_inputs",
+  "info": {
+    "displayName": "CustomInput",
+    "icon": "pencil"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "inputProps": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.input-props"
+    }
+  }
+}

@@ -1,6 +1,6 @@
-import type { CustomLinkProps } from '../shared';
+import type { ICustomLinkProps } from '../shared';
 
 export interface ITextWithLink {
 	label: string;
-	link: CustomLinkProps;
+	link: ICustomLinkProps;
 }

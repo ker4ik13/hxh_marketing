@@ -2,7 +2,7 @@ import styles from './Container.module.scss';
 
 interface Props {
 	size?: 'small' | 'medium' | 'big';
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	className?: string;
 }
 

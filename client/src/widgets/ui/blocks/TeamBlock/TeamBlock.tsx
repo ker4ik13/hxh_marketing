@@ -1,3 +1,4 @@
+import { getAnimationStyle } from '@/shared/helpers/lib';
 import type { ITeamBlockProps } from '@/shared/types/ui/blocks';
 import { BlockWithTitle, Container } from '@/shared/ui/layout';
 import { TeamPerson, Title } from '@/widgets/ui/elements';
@@ -10,7 +11,7 @@ interface Props {
 export const TeamBlock = ({ data }: Props) => {
 	return (
 		<BlockWithTitle id={data.blockId}>
-			<Container size='medium'>
+			<Container className={getAnimationStyle(data.animation)} size='medium'>
 				<Title title={data.title} />
 				<div className={styles.team}>
 					{data.data.data.map((person, index) => (

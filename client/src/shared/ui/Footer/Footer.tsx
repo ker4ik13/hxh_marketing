@@ -12,7 +12,7 @@ interface FooterProps {
 
 export const Footer = ({ data }: FooterProps) => {
 	return (
-		<footer className={styles.footer}>
+		<footer className={`${styles.footer}`}>
 			<div className={styles.upper}>
 				<Container size='medium' className={styles.upperContainer}>
 					<div className={styles.logo}>

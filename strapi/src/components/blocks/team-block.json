@@ -25,6 +25,16 @@
     "blockId": {
       "type": "string",
       "required": false
+    },
+    "animation": {
+      "type": "enumeration",
+      "enum": [
+        "from-bottom-to-top",
+        "from-top-to-bottom",
+        "from-left-to-right",
+        "from-right-to-left"
+      ],
+      "default": "from-bottom-to-top"
     }
   }
 }
