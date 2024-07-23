@@ -47,7 +47,6 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	transform: scale(1.02);
 }
 .man {
 	position: absolute;
@@ -62,6 +61,7 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	transition: transform 0.2s;
 
 	@media (max-width: $max-768) {
 		display: none;

@@ -17,6 +17,8 @@ const queryParams = [
 	// Forms
 	'populate[blocks][populate][7]=data.inputs.inputProps',
 	'populate[blocks][populate][8]=data.button',
+	// Services
+	'populate[blocks][populate][9]=data.price',
 ];
 // 10.07.2024
 // Page service / v.1.0.0

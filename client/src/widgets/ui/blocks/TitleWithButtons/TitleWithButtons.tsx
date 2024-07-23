@@ -11,33 +11,33 @@ interface Props {
 }
 
 export const TitleWithButtons = ({ data }: Props) => {
+	const content = data.data.data.attributes;
+
 	return (
-		<header className={styles.mainScreen} id={data.blockId}>
-			<Image
-				className={styles.bgImage}
-				src={bgHeaderImage}
-				alt={''}
-				width={1920}
-				height={1080}
-				quality={100}
-				priority
-			/>
+		<div className={styles.mainScreen} id={data.blockId}>
+			<div className={styles.bgImageDiv}>
+				<Image
+					className={styles.bgImage}
+					src={bgHeaderImage}
+					alt={''}
+					width={1920}
+					height={1080}
+					quality={100}
+					priority
+				/>
+			</div>
 			<Container className={getAnimationStyle(data.animation)} size='medium'>
 				<div className={styles.content}>
 					<div className={styles.titleWrapper}>
-						<h1 className={styles.title}>
-							{data.data.data.attributes.title &&
-								data.data.data.attributes.title}
-						</h1>
+						<h1 className={styles.title}>{content.title && content.title}</h1>
 						<p className={styles.subtitle}>
-							{data.data.data.attributes.subtitle &&
-								data.data.data.attributes.subtitle}
+							{content.subtitle && content.subtitle}
 						</p>
 					</div>
 					<div className={styles.buttons}>
-						{data.data.data.attributes.buttons &&
-							data.data.data.attributes.buttons.length > 0 &&
-							data.data.data.attributes.buttons.map((link, index) => (
+						{content.buttons &&
+							content.buttons.length > 0 &&
+							content.buttons.map((link, index) => (
 								<div key={index}>
 									<CustomButton.Link
 										size='large'
@@ -51,6 +51,6 @@ export const TitleWithButtons = ({ data }: Props) => {
 					</div>
 				</div>
 			</Container>
-		</header>
+		</div>
 	);
 };

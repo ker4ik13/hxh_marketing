@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_meta_user_agents",
+  "info": {
+    "displayName": "User Agents",
+    "icon": "shield"
+  },
+  "options": {},
+  "attributes": {
+    "userAgent": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

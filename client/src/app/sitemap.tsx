@@ -1,22 +1,18 @@
-import { appLinks, CLIENT_URL } from '@/shared/constants';
+import { MetaService } from '@/services/user/meta';
+import { CLIENT_URL } from '@/shared/constants';
 import type { MetadataRoute } from 'next';
 
-const siteRoutes = [
-	{
-		link: appLinks.user.main,
-		lastModify: new Date(2024, 8, 9).toISOString(),
-		priority: 1.0,
-	},
-];
-
-// sitemap.xml / v.1.0.0
+// sitemap.xml / v.1.0.1
 
 export default async function sitemap() {
+	const allPages = await MetaService.getAllPages();
 	// Все страницы
-	const routes: MetadataRoute.Sitemap = siteRoutes.map((route) => ({
-		url: `${CLIENT_URL}${route.link}`,
-		lastModified: route.lastModify || new Date().toISOString(),
-		priority: route.priority || 1.0,
+	const routes: MetadataRoute.Sitemap = allPages.data.map((page) => ({
+		url: `${CLIENT_URL}${page.attributes.path}`,
+		lastModified: page.attributes.updatedAt
+			? new Date(page.attributes.updatedAt).toISOString()
+			: new Date(page.attributes.createdAt).toISOString(),
+		priority: 1.0,
 	}));
 
 	// Все статьи

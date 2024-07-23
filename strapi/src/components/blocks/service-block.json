@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_blocks_service_blocks",
+  "info": {
+    "displayName": "ServiceBlock",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "data": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.title"
+    },
+    "blockName": {
+      "type": "string",
+      "required": true,
+      "default": "services-block"
+    },
+    "blockId": {
+      "type": "string"
+    },
+    "animation": {
+      "type": "enumeration",
+      "enum": [
+        "from-bottom-to-top",
+        "from-top-to-bottom",
+        "from-left-to-right",
+        "from-right-to-left"
+      ],
+      "default": "from-bottom-to-top",
+      "required": true
+    }
+  }
+}

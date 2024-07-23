@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_meta_metas",
+  "info": {
+    "displayName": "Robots SEO",
+    "icon": "write",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "pages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "meta.page-path",
+      "required": true
+    },
+    "userAgent": {
+      "type": "string",
+      "required": true,
+      "default": "*"
+    }
+  }
+}

@@ -28,7 +28,8 @@
         "blocks.accordion-block",
         "blocks.team-block",
         "blocks.title-with-buttons",
-        "blocks.form-block"
+        "blocks.form-block",
+        "blocks.service-block"
       ],
       "required": true
     },

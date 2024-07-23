@@ -95,7 +95,9 @@ $gray-extra-light: #f7f7f7;
 	transition:
 		all $duration,
 		--gradient-primary-1 $duration,
-		--gradient-primary-2 $duration;
+		--gradient-primary-2 $duration,
+		--gradient-secondary-1 $duration,
+		--gradient-secondary-2 $duration;
 
 	background: linear-gradient(
 		270deg,
@@ -114,6 +116,8 @@ $gray-extra-light: #f7f7f7;
 @mixin gradient-secondary($duration: 0.1s, $isNeedHover: false) {
 	transition:
 		all $duration,
+		--gradient-primary-1 $duration,
+		--gradient-primary-2 $duration,
 		--gradient-secondary-1 $duration,
 		--gradient-secondary-2 $duration;
 

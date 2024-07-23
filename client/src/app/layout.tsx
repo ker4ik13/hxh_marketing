@@ -2,10 +2,9 @@ import favicon128 from '@/data/user/favicon/favicon-128x128.png';
 import favicon32 from '@/data/user/favicon/favicon-32x32.png';
 import favicon64 from '@/data/user/favicon/favicon-64x64.png';
 import faviconSvg from '@/data/user/favicon/favicon.svg';
-// import poster from '@/data/user/source/Header.jpg';
 import { FooterService, NavigationService } from '@/services/user/layout';
 import { REVALIDATE_TIME } from '@/shared';
-import { Footer, Navigation } from '@/shared/ui';
+import { ClientRootLayout } from '@/widgets/lib';
 import type { Metadata } from 'next';
 import './styles';
 
@@ -62,11 +61,14 @@ export default async function RootLayout({
 				media='(prefers-color-scheme: dark)'
 				content='141414'
 			/>
-			<body>
-				<Navigation data={navigation.data} news={newsMessages.data} />
-				<main className='main'>{children}</main>
-				<Footer data={footer.data} />
-			</body>
+
+			<ClientRootLayout
+				footerProps={footer.data}
+				navProps={navigation.data}
+				newsProps={newsMessages.data}
+			>
+				{children}
+			</ClientRootLayout>
 		</html>
 	);
 }

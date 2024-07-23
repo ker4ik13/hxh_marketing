@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_meta_page_paths",
+  "info": {
+    "displayName": "PagePath",
+    "icon": "attachment",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "path": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

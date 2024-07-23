@@ -2,18 +2,19 @@
   "collectionName": "components_ui_titles",
   "info": {
     "displayName": "Title",
-    "icon": "bulletList"
+    "icon": "bulletList",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "label": {
-      "type": "string",
-      "required": true
-    },
     "link": {
       "type": "component",
       "repeatable": false,
       "component": "ui.link"
+    },
+    "label": {
+      "type": "richtext",
+      "required": true
     }
   }
 }

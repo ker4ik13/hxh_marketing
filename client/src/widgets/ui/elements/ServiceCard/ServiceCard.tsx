@@ -1,9 +1,30 @@
+import { IService, IServicePrice } from '@/shared/types/ui/elements';
 import { CustomButton } from '@/shared/ui';
 import { ArrowIcon, RobotIcon } from '@/shared/ui/icons';
 import Link from 'next/link';
 import styles from './ServiceCard.module.scss';
 
-export const ServiceCard = () => {
+interface Props {
+	data: IService;
+}
+
+const getServicePrice = (price: IServicePrice) => {
+	if (!price) {
+		return 'По договоренности';
+	}
+
+	switch (price.state) {
+		case 'Фикс':
+			return `${price.amount.toLocaleString('ru')}${price.currency}`;
+		case 'От':
+			return `От ${price.amount.toLocaleString('ru')}${price.currency}`;
+		case 'По договоренности':
+		default:
+			return 'По договоренности';
+	}
+};
+
+export const ServiceCard = ({ data }: Props) => {
 	return (
 		<div className={styles.serviceCard}>
 			<div className={styles.header}>
@@ -11,25 +32,21 @@ export const ServiceCard = () => {
 					<div className={styles.iconWrapper}>
 						<RobotIcon className={styles.previewIcon} />
 					</div>
-					<p className={styles.title}>веб-дизайн</p>
+					<p className={styles.title}>{data.attributes.title}</p>
 				</div>
-				<Link href='/' className={styles.linkIcon}>
+				<Link href={data.attributes.slug} className={styles.linkIcon}>
 					<ArrowIcon />
 				</Link>
 			</div>
 			<div className={styles.content}>
-				<p className={styles.description}>
-					Наши услуги по веб-дизайну направлены на создание визуально
-					потрясающих и удобных в использовании веб-сайтов, которые надолго
-					запомнятся.
-				</p>
+				<p className={styles.description}>{data.attributes.description}</p>
 				<div className={styles.footer}>
 					<div className={styles.button}>
-						<CustomButton.Link size='medium' href='/'>
-							Подробнее
-						</CustomButton.Link>
+						<CustomButton.Link {...data.attributes.button}></CustomButton.Link>
 					</div>
-					<p className={styles.price}>от 24 000₽</p>
+					<p className={styles.price}>
+						{getServicePrice(data.attributes.price)}
+					</p>
 				</div>
 			</div>
 		</div>

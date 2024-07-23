@@ -1164,7 +1164,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.accordion-block',
         'blocks.team-block',
         'blocks.title-with-buttons',
-        'blocks.form-block'
+        'blocks.form-block',
+        'blocks.service-block'
       ]
     > &
       Attribute.Required &
@@ -1278,6 +1279,171 @@ export interface ApiReviewReview extends Schema.CollectionType {
       'api::review.review',
       'oneToMany',
       'api::review.review'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiRobotRobot extends Schema.CollectionType {
+  collectionName: 'robots';
+  info: {
+    singularName: 'robot';
+    pluralName: 'robots';
+    displayName: 'Robots';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    allow: Attribute.Component<'meta.page-path', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    disallow: Attribute.Component<'meta.page-path', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    userAgent: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'*'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::robot.robot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::robot.robot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::robot.robot',
+      'oneToMany',
+      'api::robot.robot'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiServiceService extends Schema.CollectionType {
+  collectionName: 'services';
+  info: {
+    singularName: 'service';
+    pluralName: 'services';
+    displayName: 'Service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.Component<'ui.price'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    button: Attribute.Component<'ui.custom-link'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Attribute.Enumeration<
+      [
+        'VK',
+        'Behance',
+        'Instagram',
+        'WhatsApp',
+        'Telegram',
+        'GitHub',
+        'OK',
+        'Habr',
+        'Website',
+        'Arrow',
+        'Send'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::service.service',
+      'oneToMany',
+      'api::service.service'
     >;
     locale: Attribute.String;
   };
@@ -1453,6 +1619,8 @@ declare module '@strapi/types' {
       'api::news-message.news-message': ApiNewsMessageNewsMessage;
       'api::page.page': ApiPagePage;
       'api::review.review': ApiReviewReview;
+      'api::robot.robot': ApiRobotRobot;
+      'api::service.service': ApiServiceService;
       'api::team.team': ApiTeamTeam;
       'api::title-with-buttons.title-with-buttons': ApiTitleWithButtonsTitleWithButtons;
     }

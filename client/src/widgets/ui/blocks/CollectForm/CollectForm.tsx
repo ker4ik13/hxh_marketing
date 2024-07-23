@@ -3,7 +3,7 @@
 import darkMan from '@/data/user/images/dark-man.png';
 import primaryBg from '@/data/user/images/primary-gradient.jpg';
 import { TelegramService } from '@/services/user/messages';
-import { getAnimationStyle } from '@/shared/helpers/lib';
+import { getAnimationStyle, setupParallax } from '@/shared/helpers/lib';
 import type { ICollectDataFormBlockProps } from '@/shared/types/ui/blocks';
 import { CustomButton, CustomInput } from '@/shared/ui';
 import { Container } from '@/shared/ui/layout';
@@ -20,6 +20,8 @@ const getFormPositionStyles = (position: 'left' | 'right'): string => {
 };
 
 export const CollectForm = ({ data }: Props) => {
+	const content = data.data.data.attributes;
+
 	const {
 		handleSubmit,
 		setValue,
@@ -31,14 +33,14 @@ export const CollectForm = ({ data }: Props) => {
 	const submitForm = async (formData: { [key: string]: string }) => {
 		try {
 			await TelegramService.sendNewClient(formData, {
-				blockName: data.data.data.attributes.uniqueBlockName,
+				blockName: content.uniqueBlockName,
 			});
 			clearErrors();
-			data.data.data.attributes.inputs.forEach((input) => {
+			content.inputs.forEach((input) => {
 				setValue(input.inputProps?.name!, '');
 			});
 		} catch (error) {
-			data.data.data.attributes.inputs.forEach((input) => {
+			content.inputs.forEach((input) => {
 				setError(input.inputProps!.name!, {
 					message: 'Ошибка сервера, попробуйте позже',
 					type: 'serverError',
@@ -51,6 +53,11 @@ export const CollectForm = ({ data }: Props) => {
 		<div
 			className={`${styles.collectBlock} ${getAnimationStyle(data.animation)}`}
 			id={data.blockId}
+			onMouseMove={(e) =>
+				setupParallax(styles.man, e, {
+					intensity: 30,
+				})
+			}
 		>
 			{/* Bg image */}
 			<Image
@@ -77,17 +84,15 @@ export const CollectForm = ({ data }: Props) => {
 			{/* Content */}
 			<Container
 				size='medium'
-				className={`${styles.container} ${getFormPositionStyles(data.data.data.attributes.contentPosition)}`}
+				className={`${styles.container} ${getFormPositionStyles(content.contentPosition)}`}
 			>
 				<div className={styles.content}>
-					<h2 className={styles.title}>{data.data.data.attributes.title}</h2>
-					{data.data.data.attributes.description && (
-						<p className={styles.description}>
-							{data.data.data.attributes.description}
-						</p>
+					<h2 className={styles.title}>{content.title}</h2>
+					{content.description && (
+						<p className={styles.description}>{content.description}</p>
 					)}
 					<form onSubmit={handleSubmit(submitForm)} className={styles.inputs}>
-						{data.data.data.attributes.inputs.map((input, index) => (
+						{content.inputs.map((input, index) => (
 							<CustomInput
 								error={errors[input.inputProps!.name!]}
 								key={index}
@@ -106,15 +111,15 @@ export const CollectForm = ({ data }: Props) => {
 							/>
 						))}
 						<CustomButton.Button
-							type={data.data.data.attributes.button.type}
-							size={data.data.data.attributes.button.size}
-							icon={data.data.data.attributes.button.icon}
-							color={data.data.data.attributes.button.color}
+							type={content.button.type}
+							size={content.button.size}
+							icon={content.button.icon}
+							color={content.button.color}
 							disabled={isSubmitSuccessful}
 						>
 							{isSubmitSuccessful
 								? 'Спасибо за заявку!'
-								: data.data.data.attributes.button.children}
+								: content.button.children}
 						</CustomButton.Button>
 					</form>
 				</div>

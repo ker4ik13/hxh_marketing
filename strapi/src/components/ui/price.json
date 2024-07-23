@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_ui_prices",
+  "info": {
+    "displayName": "Price",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "integer"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "Фикс",
+        "От",
+        "По договоренности"
+      ],
+      "required": true
+    }
+  }
+}

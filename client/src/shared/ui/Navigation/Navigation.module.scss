@@ -12,10 +12,33 @@
 	justify-content: center;
 	position: -webkit-sticky;
 	position: sticky;
-	top: 0;
+	top: -1px;
 	left: 0;
 	z-index: 100;
 	transition: all 0.2s ease-in-out;
+
+	&.transparentBg {
+		background: transparent;
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+
+		& .logo {
+			@include gradient-secondary(0.1s, true);
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		& .pages {
+			background-color: rgba(59, 59, 59, 0.8);
+			-webkit-backdrop-filter: blur(rem(20));
+			backdrop-filter: blur(rem(20));
+
+			& .navPageLink:not(.active) {
+				background: transparent;
+			}
+		}
+	}
 
 	&.hidden {
 		transform: translate3d(0, -100%, 0);

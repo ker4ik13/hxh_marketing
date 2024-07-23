@@ -9,12 +9,14 @@ interface Props {
 }
 
 export const TeamBlock = ({ data }: Props) => {
+	const content = data.data.data;
+
 	return (
 		<BlockWithTitle id={data.blockId}>
 			<Container className={getAnimationStyle(data.animation)} size='medium'>
 				<Title title={data.title} />
 				<div className={styles.team}>
-					{data.data.data.map((person, index) => (
+					{content.map((person, index) => (
 						<TeamPerson key={person.id} data={person} />
 					))}
 				</div>

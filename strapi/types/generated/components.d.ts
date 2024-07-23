@@ -5,10 +5,11 @@ export interface UiTitle extends Schema.Component {
   info: {
     displayName: 'Title';
     icon: 'bulletList';
+    description: '';
   };
   attributes: {
-    label: Attribute.String & Attribute.Required;
     link: Attribute.Component<'ui.link'>;
+    label: Attribute.RichText & Attribute.Required;
   };
 }
 
@@ -63,6 +64,26 @@ export interface UiReviewCard extends Schema.Component {
     projectName: Attribute.String & Attribute.Required;
     content: Attribute.Text & Attribute.Required;
     author: Attribute.Component<'ui.review-person'>;
+  };
+}
+
+export interface UiPrice extends Schema.Component {
+  collectionName: 'components_ui_prices';
+  info: {
+    displayName: 'Price';
+    icon: 'write';
+  };
+  attributes: {
+    amount: Attribute.Integer;
+    currency: Attribute.String;
+    state: Attribute.Enumeration<
+      [
+        '\u0424\u0438\u043A\u0441',
+        '\u041E\u0442',
+        '\u041F\u043E \u0434\u043E\u0433\u043E\u0432\u043E\u0440\u0435\u043D\u043D\u043E\u0441\u0442\u0438'
+      ]
+    > &
+      Attribute.Required;
   };
 }
 
@@ -279,6 +300,42 @@ export interface UiAccordion extends Schema.Component {
   };
 }
 
+export interface MetaUserAgents extends Schema.Component {
+  collectionName: 'components_meta_user_agents';
+  info: {
+    displayName: 'User Agents';
+    icon: 'shield';
+  };
+  attributes: {
+    userAgent: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface MetaPagePath extends Schema.Component {
+  collectionName: 'components_meta_page_paths';
+  info: {
+    displayName: 'PagePath';
+    icon: 'attachment';
+    description: '';
+  };
+  attributes: {
+    path: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface MetaMeta extends Schema.Component {
+  collectionName: 'components_meta_metas';
+  info: {
+    displayName: 'Robots SEO';
+    icon: 'write';
+    description: '';
+  };
+  attributes: {
+    pages: Attribute.Component<'meta.page-path', true> & Attribute.Required;
+    userAgent: Attribute.String & Attribute.Required & Attribute.DefaultTo<'*'>;
+  };
+}
+
 export interface BlocksTitleWithButtons extends Schema.Component {
   collectionName: 'components_blocks_title_with_buttons';
   info: {
@@ -333,6 +390,36 @@ export interface BlocksTeamBlock extends Schema.Component {
         'from-right-to-left'
       ]
     > &
+      Attribute.DefaultTo<'from-bottom-to-top'>;
+  };
+}
+
+export interface BlocksServiceBlock extends Schema.Component {
+  collectionName: 'components_blocks_service_blocks';
+  info: {
+    displayName: 'ServiceBlock';
+    icon: 'grid';
+  };
+  attributes: {
+    data: Attribute.Relation<
+      'blocks.service-block',
+      'oneToMany',
+      'api::service.service'
+    >;
+    title: Attribute.Component<'ui.title'>;
+    blockName: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'services-block'>;
+    blockId: Attribute.String;
+    animation: Attribute.Enumeration<
+      [
+        'from-bottom-to-top',
+        'from-top-to-bottom',
+        'from-left-to-right',
+        'from-right-to-left'
+      ]
+    > &
+      Attribute.Required &
       Attribute.DefaultTo<'from-bottom-to-top'>;
   };
 }
@@ -425,6 +512,7 @@ declare module '@strapi/types' {
       'ui.team-person': UiTeamPerson;
       'ui.review-person': UiReviewPerson;
       'ui.review-card': UiReviewCard;
+      'ui.price': UiPrice;
       'ui.news-message': UiNewsMessage;
       'ui.logo': UiLogo;
       'ui.link': UiLink;
@@ -435,8 +523,12 @@ declare module '@strapi/types' {
       'ui.custom-button': UiCustomButton;
       'ui.contact-link': UiContactLink;
       'ui.accordion': UiAccordion;
+      'meta.user-agents': MetaUserAgents;
+      'meta.page-path': MetaPagePath;
+      'meta.meta': MetaMeta;
       'blocks.title-with-buttons': BlocksTitleWithButtons;
       'blocks.team-block': BlocksTeamBlock;
+      'blocks.service-block': BlocksServiceBlock;
       'blocks.review-block': BlocksReviewBlock;
       'blocks.form-block': BlocksFormBlock;
       'blocks.accordion-block': BlocksAccordionBlock;

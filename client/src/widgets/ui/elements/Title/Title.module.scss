@@ -21,8 +21,25 @@
 	color: $gray-extra-light;
 	text-transform: uppercase;
 
+	& > * {
+		@include gilroy(500, 50);
+		color: $gray-extra-light;
+		text-transform: uppercase;
+	}
+
+	& strong {
+		@include gilroy(600, 50);
+		color: $primary-tint-200;
+	}
+
 	@media (max-width: $max-768) {
-		font-size: rem(26);
+		& > * {
+			font-size: rem(26);
+
+			& strong {
+				font-size: rem(26);
+			}
+		}
 	}
 }
 .link {

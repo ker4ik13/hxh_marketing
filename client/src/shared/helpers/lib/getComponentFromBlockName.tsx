@@ -2,6 +2,7 @@ import type { IComponentMap, IComponentProps } from '@/shared/types/ui/blocks';
 import {
 	AccordionBlock,
 	CollectForm,
+	ServiceBlock,
 	TeamBlock,
 	TitleWithButtons,
 } from '@/widgets/ui/blocks';
@@ -12,6 +13,7 @@ const components: IComponentMap = {
 	'accordion-block': AccordionBlock,
 	'team-block': TeamBlock,
 	'form-block': CollectForm,
+	'services-block': ServiceBlock,
 };
 
 export const getComponentFromBlockName = (

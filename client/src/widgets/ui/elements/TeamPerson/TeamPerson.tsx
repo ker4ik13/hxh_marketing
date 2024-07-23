@@ -1,3 +1,5 @@
+'use client';
+
 import { setServerUrlBeforeSrc } from '@/shared/helpers/files';
 import { getIconFromName } from '@/shared/helpers/lib';
 import type { ITeamPerson } from '@/shared/types/ui/elements';
@@ -12,13 +14,15 @@ interface Props {
 export const TeamPerson = ({ data }: Props) => {
 	return (
 		<div className={styles.teamPerson}>
-			<Image
-				src={setServerUrlBeforeSrc(data.attributes.image.data.attributes.url)}
-				className={styles.personImage}
-				alt={data.attributes.name}
-				width={505}
-				height={214}
-			/>
+			<div className={styles.personImageWrapper}>
+				<Image
+					src={setServerUrlBeforeSrc(data.attributes.image.data.attributes.url)}
+					className={styles.personImage}
+					alt={data.attributes.name}
+					width={505}
+					height={214}
+				/>
+			</div>
 			<div className={styles.info}>
 				<div className={styles.name}>
 					<p className={styles.personName}>{data.attributes.name}</p>

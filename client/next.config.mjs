@@ -12,10 +12,6 @@ const nextConfig = {
 			},
 		],
 	},
-	experimental: {
-		scrollRestoration: false,
-		optimizeCss: process.env.NODE_ENV === 'production' ? true : false,
-	},
 };
 
 export default nextConfig;
