@@ -1,5 +1,5 @@
 import { YANDEX_METRIKA } from '@/shared/constants';
-import { YandexMetrikaWrapper } from '@hxhcore/react';
+import { YandexMetricaProvider } from 'next-yandex-metrica';
 
 interface YandexMetricaProps {
 	children: React.ReactNode;
@@ -10,20 +10,33 @@ interface YandexMetricaProps {
 export const YandexMetricaWrapper = ({ children }: YandexMetricaProps) => {
 	if (process.env.NODE_ENV === 'production') {
 		return (
-			<YandexMetrikaWrapper
-				options={{
-					tagID: YANDEX_METRIKA,
-					initParameters: {
-						accurateTrackBounce: true,
-						clickmap: true,
-						trackLinks: true,
-						webvisor: true,
-					},
+			<YandexMetricaProvider
+				tagID={YANDEX_METRIKA}
+				initParameters={{
+					accurateTrackBounce: true,
+					clickmap: true,
+					trackLinks: true,
+					webvisor: true,
 				}}
 			>
 				{children}
-			</YandexMetrikaWrapper>
+			</YandexMetricaProvider>
 		);
+		// return (
+		// 	<YandexMetrikaWrapper
+		// 		options={{
+		// 			tagID: YANDEX_METRIKA,
+		// 			initParameters: {
+		// 				accurateTrackBounce: true,
+		// 				clickmap: true,
+		// 				trackLinks: true,
+		// 				webvisor: true,
+		// 			},
+		// 		}}
+		// 	>
+		// 		{children}
+		// 	</YandexMetrikaWrapper>
+		// );
 	}
 
 	return <>{children}</>;
