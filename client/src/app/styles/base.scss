@@ -42,31 +42,31 @@ body.blur {
 		visibility: visible;
 	}
 }
-// .animation-block {
-// 	opacity: 0;
-// 	transition:
-// 		transform 1s,
-// 		opacity 1s;
+.animation-block {
+	opacity: 0;
+	transition:
+		transform 1s,
+		opacity 1s;
 
-// 	// Directions
-// 	&.from-left-to-right {
-// 		transform: translate3d(-$animation-px, 0, 0);
-// 	}
-// 	&.from-right-to-left {
-// 		transform: translate3d($animation-px, 0, 0);
-// 	}
-// 	&.from-top-to-bottom {
-// 		transform: translate3d(0, -$animation-px, 0);
-// 	}
-// 	&.from-bottom-to-top {
-// 		transform: translate3d(0, $animation-px, 0);
-// 	}
+	// Directions
+	&.from-left-to-right {
+		transform: translate3d(-$animation-px, 0, 0);
+	}
+	&.from-right-to-left {
+		transform: translate3d($animation-px, 0, 0);
+	}
+	&.from-top-to-bottom {
+		transform: translate3d(0, -$animation-px, 0);
+	}
+	&.from-bottom-to-top {
+		transform: translate3d(0, $animation-px, 0);
+	}
 
-// 	&.show-animation {
-// 		opacity: 1;
-// 		transform: translate3d(0, 0, 0);
-// 	}
-// }
+	&.show-animation {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
 
 :root {
 	color-scheme: only dark;

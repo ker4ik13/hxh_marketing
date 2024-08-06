@@ -1,4 +1,3 @@
-export * from './getActiveStyle';
 export * from './getAnimationStyle';
 export * from './getComponentFromBlockName';
 export * from './getIconFromName';

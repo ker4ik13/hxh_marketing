@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Site {
+  id          Int     @id @default(autoincrement())
+  name        String
+  url         String?
+  isAvailable Boolean @default(true)
+  // author      BotUser @relation(fields: [authorId], references: [id])
+  // authorId    BigInt  @unique
+}
+
+model BotUser {
+  id           BigInt  @id @unique
+  isBot        Boolean @default(false)
+  firstName    String
+  lastName     String?
+  username     String?
+  languageCode String?
+  isAdmin      Boolean @default(false)
+  // Site         Site[]
+}

@@ -1,0 +1,14 @@
+FROM node:20.10.0-alpine as build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+COPY .env.development .env
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
