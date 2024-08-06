@@ -1,6 +1,3 @@
-import { $server } from '@/services/http';
-import type { TelegramResult } from '@/shared/types/api/telegram';
-
 const BOT_URL = '/telegram-bot-strapi/send-message';
 
 interface ClientValues {
@@ -12,9 +9,10 @@ interface ClientValues {
 export class TelegramService {
 	// Сообщение о неопубликованном блоке
 	static async sendNotPublishedBlock(blockName: string) {
-		await $server.post(BOT_URL, {
-			message: `Блок [${blockName}] добавлен в страницу, но не опубликован.`,
-		});
+		// await $server.post(BOT_URL, {
+		// 	message: `Блок [${blockName}] добавлен в страницу, но не опубликован.`,
+		// });
+		return;
 	}
 
 	// Сообщение об оставленной заявке
@@ -24,18 +22,19 @@ export class TelegramService {
 			blockName?: string;
 		},
 	) {
-		let message = 'Новый клиент!\n\n';
+		// let message = 'Новый клиент!\n\n';
 
-		if (options && options.blockName) {
-			message += `Блок: ${options.blockName}\n\n`;
-		}
+		// if (options && options.blockName) {
+		// 	message += `Блок: ${options.blockName}\n\n`;
+		// }
 
-		for (let key in client) {
-			message += `${key}: ${client[key]}\n`;
-		}
+		// for (let key in client) {
+		// 	message += `${key}: ${client[key]}\n`;
+		// }
 
-		return await $server.post<TelegramResult>(BOT_URL, {
-			message,
-		});
+		// return await $server.post<TelegramResult>(BOT_URL, {
+		// 	message,
+		// });
+		return;
 	}
 }
